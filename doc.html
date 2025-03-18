@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tcjsgame.js Documentation</title>
     <link rel="icon" href="img/icon.jpg">
-    <meta name="description" content="TCJSgame documentation avalible here">
+    <meta name="description" content="TCJSgame documentation available here">
     <link rel="stylesheet" href="style.css">
+    <style>
+        a{
+            display: inline-block;
+            padding-right: 12px;
+        }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var coll = document.getElementsByClassName("collapsible");
@@ -26,22 +32,19 @@
 </head>
 <body>
     <header>
-    <img src="img/icon.jpg" class="img" alt="Icon for TCJSgame">
-    <h1>tcjsgame.js Documentation</h1>
-    <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
-    <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (<code>move</code> and <code>state</code>) for manipulating game entities.</p>
+        <img src="img/icon.jpg" class="img" alt="Icon for TCJSgame">
+        <h1>tcjsgame.js Documentation</h1>
+        <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
+        <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (<code>move</code> and <code>state</code>) for manipulating game entities.</p>
     </header>
     <nav>
-        <ul>
+        <ul style="width: 100%; overflow-x: auto;">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="doc.html">Documentation</a></li>
             <li><a href="download.html">Download</a></li>
-
-
         </ul>
     </nav>
-    
 
     <div class="section">
         <h2>Classes</h2>
@@ -72,7 +75,6 @@
                         <p><strong>Parameters:</strong> None.</p>
                         <p><strong>Returns:</strong> None.</p>
                     </div>
-                    <!-- Add other methods (clear, borderStyle, stop, etc.) similarly -->
                     <div class="method">
                         <h3>clear()</h3>
                         <p><strong>Description:</strong> Clears the canvas.</p>
@@ -159,12 +161,52 @@
                         <li><code>type</code> (string, optional): Type of component ("image" or "text", default: undefined).</li>
                     </ul>
                     <p><strong>Returns:</strong> New Component instance.</p>
-                    <!-- Add methods (update, moveAngle, etc.) similarly -->
+                    <h4>Methods</h4>
+                    <div class="method">
+                        <h3>update(ctx = display.context)</h3>
+                        <p><strong>Description:</strong> Renders the component on the canvas.</p>
+                        <p><strong>Parameters:</strong> <code>ctx</code> (CanvasRenderingContext2D, optional): Context to render on.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>moveAngle()</h3>
+                        <p><strong>Description:</strong> Moves the component based on angle and gravity.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>move()</h3>
+                        <p><strong>Description:</strong> Updates the component's position based on speed and physics.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>hitBottom()</h3>
+                        <p><strong>Description:</strong> Checks and handles collision with the canvas bottom.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>stopMove()</h3>
+                        <p><strong>Description:</strong> Stops the component's movement.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>clicked()</h3>
+                        <p><strong>Description:</strong> Checks if the component was clicked, accounting for rotation.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> Boolean.</p>
+                    </div>
+                    <div class="method">
+                        <h3>crashWith(otherobj)</h3>
+                        <p><strong>Description:</strong> Checks for collision with another component, accounting for rotation.</p>
+                        <p><strong>Parameters:</strong> <code>otherobj</code> (Component): The other component to check.</p>
+                        <p><strong>Returns:</strong> Boolean.</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Add similar collapsible sections for Sound, Camera, Sprite -->
 
         <button class="collapsible">Sound</button>
         <div class="content">
@@ -271,7 +313,192 @@
                 <h3>move</h3>
                 <p><strong>Description:</strong> Provides methods to manipulate component movement and behavior.</p>
                 <div class="details">
-                    <!-- Add all move methods (backward, teleport, etc.) similarly -->
+                    <div class="method">
+                        <h3>backward(id, steps)</h3>
+                        <p><strong>Description:</strong> Moves the component backward diagonally.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component to move.</li>
+                            <li><code>steps</code> (number): Speed of movement.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>teleport(id, x, y)</h3>
+                        <p><strong>Description:</strong> Teleports the component to a specific position.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component to teleport.</li>
+                            <li><code>x</code> (number): Target x-coordinate.</li>
+                            <li><code>y</code> (number): Target y-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>setX(id, x)</h3>
+                        <p><strong>Description:</strong> Sets the component's x-coordinate.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>x</code> (number): New x-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>setY(id, y)</h3>
+                        <p><strong>Description:</strong> Sets the component's y-coordinate.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>y</code> (number): New y-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>stamp(id)</h3>
+                        <p><strong>Description:</strong> Creates a copy of the component at its current position.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component to stamp.</p>
+                        <p><strong>Returns:</strong> Component.</p>
+                    </div>
+                    <div class="method">
+                        <h3>circle(id, speed)</h3>
+                        <p><strong>Description:</strong> Moves the component in a circular path.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>speed</code> (number): Angular speed in degrees per frame.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>dot(id)</h3>
+                        <p><strong>Description:</strong> Draws a dot at the component's position.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>clearStamp(id)</h3>
+                        <p><strong>Description:</strong> Disables rendering of the component.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>turnLeft(id, steps)</h3>
+                        <p><strong>Description:</strong> Rotates the component left.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>steps</code> (number): Rotation angle in radians.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>turnRight(id, steps)</h3>
+                        <p><strong>Description:</strong> Rotates the component right.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>steps</code> (number): Rotation angle in radians.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>bound(id)</h3>
+                        <p><strong>Description:</strong> Keeps the component within the canvas x-bounds.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>hitObject(id, otherid)</h3>
+                        <p><strong>Description:</strong> Handles collision with another object, applying bounce.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>otherid</code> (Component): The other component.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>glideX(id, t, x)</h3>
+                        <p><strong>Description:</strong> Moves the component to a target x-coordinate over time.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>t</code> (number): Time in seconds.</li>
+                            <li><code>x</code> (number): Target x-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>glideY(id, t, y)</h3>
+                        <p><strong>Description:</strong> Moves the component to a target y-coordinate over time.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>t</code> (number): Time in seconds.</li>
+                            <li><code>y</code> (number): Target y-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>glideTo(id, t, x, y)</h3>
+                        <p><strong>Description:</strong> Moves the component to a target position over time.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>t</code> (number): Time in seconds.</li>
+                            <li><code>x</code> (number): Target x-coordinate.</li>
+                            <li><code>y</code> (number): Target y-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>project(id, initialVelocity, angle, gravity)</h3>
+                        <p><strong>Description:</strong> Projects the component with initial velocity and gravity.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>initialVelocity</code> (number): Starting speed.</li>
+                            <li><code>angle</code> (number): Launch angle in degrees.</li>
+                            <li><code>gravity</code> (number): Gravity acceleration.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>pointTo(id, targetX, targetY)</h3>
+                        <p><strong>Description:</strong> Rotates the component to face a target point.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>targetX</code> (number): Target x-coordinate.</li>
+                            <li><code>targetY</code> (number): Target y-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>accelerate(id, accelX, accelY, maxSpeedX = Infinity, maxSpeedY = Infinity)</h3>
+                        <p><strong>Description:</strong> Accelerates the component with optional speed limits.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>accelX</code> (number): X-acceleration.</li>
+                            <li><code>accelY</code> (number): Y-acceleration.</li>
+                            <li><code>maxSpeedX</code> (number, optional): Maximum x-speed (default: Infinity).</li>
+                            <li><code>maxSpeedY</code> (number, optional): Maximum y-speed (default: Infinity).</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>decelerate(id, decelX, decelY)</h3>
+                        <p><strong>Description:</strong> Decelerates the component to a stop.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component.</li>
+                            <li><code>decelX</code> (number): X-deceleration rate.</li>
+                            <li><code>decelY</code> (number): Y-deceleration rate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
                     <div class="method">
                         <h3>position(id, direction, offset = 0)</h3>
                         <p><strong>Description:</strong> Positions the component relative to a canvas edge.</p>
@@ -290,7 +517,6 @@ move.position(player, "right", 20); // Places player 20px from the right, center
                             </code></pre>
                         </div>
                     </div>
-                    <!-- Add other move methods here -->
                 </div>
             </div>
         </div>
@@ -301,7 +527,46 @@ move.position(player, "right", 20); // Places player 20px from the right, center
                 <h3>state</h3>
                 <p><strong>Description:</strong> Provides methods to query component states.</p>
                 <div class="details">
-                    <!-- Add all state methods (distance, rect, etc.) similarly -->
+                    <div class="method">
+                        <h3>distance(id, otherid)</h3>
+                        <p><strong>Description:</strong> Calculates the distance between two components.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): First component.</li>
+                            <li><code>otherid</code> (Component): Second component.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> Number.</p>
+                    </div>
+                    <div class="method">
+                        <h3>rect(id)</h3>
+                        <p><strong>Description:</strong> Returns the component's bounding box.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> Array [x, y, width, height].</p>
+                    </div>
+                    <div class="method">
+                        <h3>physics(id)</h3>
+                        <p><strong>Description:</strong> Checks if physics is enabled.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> Boolean.</p>
+                    </div>
+                    <div class="method">
+                        <h3>changeAngle(id)</h3>
+                        <p><strong>Description:</strong> Checks if angle changes are enabled.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> Boolean.</p>
+                    </div>
+                    <div class="method">
+                        <h3>Angle(id)</h3>
+                        <p><strong>Description:</strong> Gets the component's rotation angle.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> Number (radians).</p>
+                    </div>
+                    <div class="method">
+                        <h3>pos(id)</h3>
+                        <p><strong>Description:</strong> Gets the component's position as a string.</p>
+                        <p><strong>Parameters:</strong> <code>id</code> (Component): The component.</p>
+                        <p><strong>Returns:</strong> String (e.g., "x,y").</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -311,7 +576,7 @@ move.position(player, "right", 20); // Places player 20px from the right, center
             <div class="class">
                 <h3>comm</h3>
                 <p><strong>Description:</strong> Global array to store all components for rendering.</p>
-                <p><strong>Type:</strong> Array&lt;Component&gt;.</p>
+                <p><strong>Type:</strong> Array<Component>.</p>
                 <p><strong>Usage:</strong> Managed by <code>display.add()</code>.</p>
             </div>
         </div>
@@ -354,5 +619,6 @@ move.position(player, "right", 20); // Places player 20px from the right, center
             </code></pre>
         </div>
     </div>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9227612bbbc3ed86',t:'MTc0MjMyODY5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
