@@ -140,7 +140,7 @@
     <script>
         let i = 0
          function move() { 
-             imgs = [,"url('img/icon.jpg')", "url('img/logo.png')"]
+             imgs = [,"url('img/icon.jpg')", "url('img/logo.png')", "url('img/game.png')", "url('img/game1.png')", "url('img/game.jpg')", "url('img/game1.jpg')"]
              //,"url('static/assets/presido.jpg')""url('static/assets/more_ym.jpg')"
              console.log(imgs[i])
              document.querySelector('header').style.backgroundImage = imgs[i] 
@@ -150,7 +150,7 @@
                  console.log("It worked"+i)
              }, 3000);
              i += 1
-             if(i > 2){
+             if(i > 6){
                  i = 0
              }
              
