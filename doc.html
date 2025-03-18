@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tcjsgame.js Documentation</title>
+    <link rel="icon" href="img/icon.jpg">
+    <meta name="description" content="TCJSgame documentation avalible here">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var coll = document.getElementsByClassName("collapsible");
+            for (var i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+    <img src="img/icon.jpg" class="img" alt="Icon for TCJSgame">
+    <h1>tcjsgame.js Documentation</h1>
+    <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
+    <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (<code>move</code> and <code>state</code>) for manipulating game entities.</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="doc.html">Documentation</a></li>
+            <li><a href="download.html">Download</a></li>
+
+
+        </ul>
+    </nav>
+    
+
+    <div class="section">
+        <h2>Classes</h2>
+
+        <button class="collapsible">Display</button>
+        <div class="content">
+            <div class="class">
+                <h3>Display</h3>
+                <p><strong>Description:</strong> Manages the game canvas, handles rendering, input events, and the game loop.</p>
+                <div class="details">
+                    <h4>Constructor</h4>
+                    <p><code>new Display()</code> - Initializes a new display object with a canvas, context, and camera.</p>
+                    <h4>Methods</h4>
+                    <div class="method">
+                        <h3>start(width = 480, height = 270, no = document.body)</h3>
+                        <p><strong>Description:</strong> Starts the game loop and sets up the canvas.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>width</code> (number, optional): Canvas width (default: 480).</li>
+                            <li><code>height</code> (number, optional): Canvas height (default: 270).</li>
+                            <li><code>no</code> (HTMLElement, optional): Parent element to append the canvas to (default: <code>document.body</code>).</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>addEventListeners()</h3>
+                        <p><strong>Description:</strong> Adds event listeners for keyboard, mouse, and touch input.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <!-- Add other methods (clear, borderStyle, stop, etc.) similarly -->
+                    <div class="method">
+                        <h3>clear()</h3>
+                        <p><strong>Description:</strong> Clears the canvas.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>borderStyle(borderStyle)</h3>
+                        <p><strong>Description:</strong> Sets the canvas border style (e.g., "solid", "dashed").</p>
+                        <p><strong>Parameters:</strong> <code>borderStyle</code> (string).</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>stop()</h3>
+                        <p><strong>Description:</strong> Stops the game loop.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>borderSize(borderSize)</h3>
+                        <p><strong>Description:</strong> Sets the canvas border size (e.g., "1px").</p>
+                        <p><strong>Parameters:</strong> <code>borderSize</code> (string).</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>backgroundColor(color)</h3>
+                        <p><strong>Description:</strong> Sets the canvas background color (e.g., "black").</p>
+                        <p><strong>Parameters:</strong> <code>color</code> (string).</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>borderColor(color)</h3>
+                        <p><strong>Description:</strong> Sets the canvas border color (e.g., "red").</p>
+                        <p><strong>Parameters:</strong> <code>color</code> (string).</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>fontColor(color)</h3>
+                        <p><strong>Description:</strong> Sets the canvas font color (e.g., "white").</p>
+                        <p><strong>Parameters:</strong> <code>color</code> (string).</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>scale(width, height)</h3>
+                        <p><strong>Description:</strong> Resizes the canvas.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>width</code> (number): New canvas width.</li>
+                            <li><code>height</code> (number): New canvas height.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>add(x)</h3>
+                        <p><strong>Description:</strong> Adds a component to the rendering list.</p>
+                        <p><strong>Parameters:</strong> <code>x</code> (Component): The component to add.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>updat()</h3>
+                        <p><strong>Description:</strong> Updates and renders all components, applying camera translation.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="collapsible">Component</button>
+        <div class="content">
+            <div class="class">
+                <h3>Component</h3>
+                <p><strong>Description:</strong> Represents a game object (e.g., player, enemy) with position, size, and movement properties.</p>
+                <div class="details">
+                    <h4>Constructor</h4>
+                    <p><code>new Component(width = 0, height = 0, color = null, x = 0, y = 0, type)</code></p>
+                    <p><strong>Parameters:</strong></p>
+                    <ul>
+                        <li><code>width</code> (number, optional): Width of the component (default: 0).</li>
+                        <li><code>height</code> (number, optional): Height of the component (default: 0).</li>
+                        <li><code>color</code> (string, optional): Color or image source (default: null).</li>
+                        <li><code>x</code> (number, optional): Initial x-coordinate (default: 0).</li>
+                        <li><code>y</code> (number, optional): Initial y-coordinate (default: 0).</li>
+                        <li><code>type</code> (string, optional): Type of component ("image" or "text", default: undefined).</li>
+                    </ul>
+                    <p><strong>Returns:</strong> New Component instance.</p>
+                    <!-- Add methods (update, moveAngle, etc.) similarly -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Add similar collapsible sections for Sound, Camera, Sprite -->
+
+        <button class="collapsible">Sound</button>
+        <div class="content">
+            <div class="class">
+                <h3>Sound</h3>
+                <p><strong>Description:</strong> Manages audio playback.</p>
+                <div class="details">
+                    <h4>Constructor</h4>
+                    <p><code>new Sound(src)</code></p>
+                    <p><strong>Parameters:</strong> <code>src</code> (string): URL of the audio file.</p>
+                    <p><strong>Returns:</strong> New Sound instance.</p>
+                    <h4>Methods</h4>
+                    <div class="method">
+                        <h3>play()</h3>
+                        <p><strong>Description:</strong> Plays the sound.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>stop()</h3>
+                        <p><strong>Description:</strong> Pauses the sound.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="collapsible">Camera</button>
+        <div class="content">
+            <div class="class">
+                <h3>Camera</h3>
+                <p><strong>Description:</strong> Manages the camera's position to follow a target.</p>
+                <div class="details">
+                    <h4>Constructor</h4>
+                    <p><code>new Camera(x = 0, y = 0)</code></p>
+                    <p><strong>Parameters:</strong></p>
+                    <ul>
+                        <li><code>x</code> (number, optional): Initial x-coordinate (default: 0).</li>
+                        <li><code>y</code> (number, optional): Initial y-coordinate (default: 0).</li>
+                    </ul>
+                    <p><strong>Returns:</strong> New Camera instance.</p>
+                    <h4>Methods</h4>
+                    <div class="method">
+                        <h3>follow(target, smooth = false)</h3>
+                        <p><strong>Description:</strong> Moves the camera to follow a target component.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>target</code> (Component): The component to follow.</li>
+                            <li><code>smooth</code> (boolean, optional): Whether to use smooth interpolation (default: false).</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="collapsible">Sprite</button>
+        <div class="content">
+            <div class="class">
+                <h3>Sprite</h3>
+                <p><strong>Description:</strong> Handles animated sprites using a sprite sheet.</p>
+                <div class="details">
+                    <h4>Constructor</h4>
+                    <p><code>new Sprite(image, frameWidth, frameHeight, frameCount, frameSpeed)</code></p>
+                    <p><strong>Parameters:</strong></p>
+                    <ul>
+                        <li><code>image</code> (Image): The sprite sheet image.</li>
+                        <li><code>frameWidth</code> (number): Width of each frame.</li>
+                        <li><code>frameHeight</code> (number): Height of each frame.</li>
+                        <li><code>frameCount</code> (number): Number of frames in the animation.</li>
+                        <li><code>frameSpeed</code> (number): Frames per update interval.</li>
+                    </ul>
+                    <p><strong>Returns:</strong> New Sprite instance.</p>
+                    <h4>Methods</h4>
+                    <div class="method">
+                        <h3>update()</h3>
+                        <p><strong>Description:</strong> Updates the current frame of the animation.</p>
+                        <p><strong>Parameters:</strong> None.</p>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                    <div class="method">
+                        <h3>draw(ctx, x, y)</h3>
+                        <p><strong>Description:</strong> Renders the current frame at the specified position.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>ctx</code> (CanvasRenderingContext2D): Context to render on.</li>
+                            <li><code>x</code> (number): X-coordinate.</li>
+                            <li><code>y</code> (number): Y-coordinate.</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Global Objects</h2>
+
+        <button class="collapsible">move</button>
+        <div class="content">
+            <div class="class">
+                <h3>move</h3>
+                <p><strong>Description:</strong> Provides methods to manipulate component movement and behavior.</p>
+                <div class="details">
+                    <!-- Add all move methods (backward, teleport, etc.) similarly -->
+                    <div class="method">
+                        <h3>position(id, direction, offset = 0)</h3>
+                        <p><strong>Description:</strong> Positions the component relative to a canvas edge.</p>
+                        <p><strong>Parameters:</strong></p>
+                        <ul>
+                            <li><code>id</code> (Component): The component to position.</li>
+                            <li><code>direction</code> (string): Edge to position against ("top", "bottom", "left", "right").</li>
+                            <li><code>offset</code> (number, optional): Distance from edge (default: 0).</li>
+                        </ul>
+                        <p><strong>Returns:</strong> None.</p>
+                        <div class="example">
+                            <p><strong>Example:</strong></p>
+                            <pre><code>
+move.position(player, "top", 10); // Places player 10px from the top, centered horizontally
+move.position(player, "right", 20); // Places player 20px from the right, centered vertically
+                            </code></pre>
+                        </div>
+                    </div>
+                    <!-- Add other move methods here -->
+                </div>
+            </div>
+        </div>
+
+        <button class="collapsible">state</button>
+        <div class="content">
+            <div class="class">
+                <h3>state</h3>
+                <p><strong>Description:</strong> Provides methods to query component states.</p>
+                <div class="details">
+                    <!-- Add all state methods (distance, rect, etc.) similarly -->
+                </div>
+            </div>
+        </div>
+
+        <button class="collapsible">comm</button>
+        <div class="content">
+            <div class="class">
+                <h3>comm</h3>
+                <p><strong>Description:</strong> Global array to store all components for rendering.</p>
+                <p><strong>Type:</strong> Array&lt;Component&gt;.</p>
+                <p><strong>Usage:</strong> Managed by <code>display.add()</code>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Usage Example</h2>
+        <div class="example">
+            <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Game Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script src="tcjsgame.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        var display = new Display();
+        display.start();
+
+        var player = new Component(20, 20, "blue", 240, 135);
+        display.add(player);
+
+        function update() {
+            if (display.keys[37]) move.accelerate(player, -0.5, 0, 5);
+            else if (display.keys[39]) move.accelerate(player, 0.5, 0, 5);
+            else move.decelerate(player, 0.3, 0);
+            if (display.keys[38]) move.accelerate(player, 0, -0.5, Infinity, 5);
+            else if (display.keys[40]) move.accelerate(player, 0, 0.5, Infinity, 5);
+            else move.decelerate(player, 0, 0.3);
+            display.camera.follow(player, false);
+        }
+
+        // Position player at top with 10px offset
+        move.position(player, "top", 10);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </div>
+    </div>
+</body>
+</html>

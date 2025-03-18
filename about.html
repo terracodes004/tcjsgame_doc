@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCJSgame</title>
+    <link rel="icon" href="/img/icon.jpg">
+    <meta name="description" content="TCJSgame documentation avalible here">
+    <link rel="stylesheet" href="style.css">
+    <script  src="func.js"></script>
+    <style>
+        .con{
+            display: grid;
+            width: 100%;
+            grid-template-columns: 2fr 1fr;
+        }
+        .small{
+            color: rgba(173, 172, 172, 0.23);
+        }
+        h1, h2, h3, h4, h5, h6{
+            text-transform: uppercase;
+            text-align: center;
+        }
+        article{
+            background-color: white;
+            width: 100%;
+            
+            h3, h2{
+                text-decoration: underline;
+                text-transform: uppercase;
+            }
+            
+            
+        }
+        img{
+            width: 100%;
+        }
+        details{
+            display: inline-block;
+            width: 100%;
+        }
+        details :hover{
+            cursor:cell;
+        }
+        /*
+         body{
+            background:linear-gradient(to right, #2783e655, #0057b35a);
+         }*/
+        @media screen and (max-width : 780px) {
+            .con{
+                display: block;
+                
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0px;">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="doc.html">Documentation</a></li>
+            <li><a href="download.html">Download</a></li>
+
+
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <fieldset>
+                <legend>TERRA CODES</legend>
+                <div class="con">
+            <article>
+                <h2>Terra Codes</h2>
+
+                <h3>Introduction</h3>
+                Terra Codes is a software company for creating applications for both developers, graphic designers and other comupter. <br>
+                <details> <summary>
+
+                </summary>
+                    <h2>History</h2>
+                    <p>
+                        Terra codes is just a company created by a Nigerian teenager at the age of 16 to gather developers in his school.
+                    </p>
+                    
+            </details>
+
+            </article>
+            <img src="img/logo.png" class="secimg">
+        </div>
+        </fieldset>
+        <fieldset>
+            <legend>ABOUT TCJSgame</legend>
+            <div class="con">
+        <article>
+            <h2>TCJSGAME</h2>
+            <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
+            <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
+                <details>
+                    <summary></summary>
+                    
+            <p>
+                <h3>History</h3>
+                Owolabi kehinde (the arthur) was and wanted to learn how to create a game using Javascript in W3schools but it was to hard for him so he decided to created Jgame in 2023 and finished 2024. He later renamed it to TCgame in 2025 and then changed it to TCJSgame in the same year.
+            </p></details>
+        </article>
+        <img src="img/icon.jpg" class="secimg">
+    </div>
+    </fieldset></section>
+</main>
+
+<script>
+    let i = 0
+     function move() { 
+         imgs = [,"url('img/icon.jpg')", "url('img/logo.png')"]
+         //,"url('static/assets/presido.jpg')""url('static/assets/more_ym.jpg')"
+         console.log(imgs[i])
+         document.querySelector('header').style.backgroundImage = imgs[i] 
+         setTimeout(() => {
+             //noting
+             
+             console.log("It worked"+i)
+         }, 3000);
+         i += 1
+         if(i > 2){
+             i = 0
+         }
+         
+
+     }
+         
+
+     
+      setInterval(move, 3000);
+ </script>
+ 
+ <script src="script.js"></script>
+</body>
+</html>
