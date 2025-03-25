@@ -89,7 +89,7 @@ class Display {
         try {
             update();
         } catch (e) {
-            console.error("Update error:", e);
+            //console.error("Update error:", e);
         }
         comm.forEach(component => {
             component.move();
