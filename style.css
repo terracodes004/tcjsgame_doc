@@ -98,7 +98,8 @@ ul{
     display: grid;
     background: linear-gradient(to right, #007BFF, #0056b3);
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    
+    overflow-x: auto;
+    width: 100%;
     li > a{
         color: white;
         text-decoration: none;
