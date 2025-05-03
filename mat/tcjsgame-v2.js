@@ -82,6 +82,8 @@ class Display {
     }
 
     updat() {
+        Mouse.x = mouse.x
+        Mouse.y = mouse.y
         this.clear();
         this.frameNo += 1;
         this.context.save();
@@ -89,7 +91,7 @@ class Display {
         try {
             update();
         } catch (e) {
-            //console.error("Update error:", e);
+            console.error("Update error:", e);
         }
         comm.forEach(component => {
             component.move();
@@ -239,7 +241,20 @@ class Sound {
         this.sound.pause();
     }
 }
+let mouse = {
+    x:0,
+    y:0,
+    down:false
+}
 
+
+window.addEventListener("mousedown",(e)=>{
+    mouse.down = true
+})
+window.addEventListener("mouseup",(e)=>{
+    mouse.down = false
+})
+let Mouse = new Component(10, 10, "white", mouse.x, mouse.y)
 class Camera {
     constructor(x = 0, y = 0, worldWidth = 1000, worldHeight = 1000) {
         this.x = x;
@@ -569,3 +584,5 @@ class Sprite {
         );
     }
 }
+
+                
