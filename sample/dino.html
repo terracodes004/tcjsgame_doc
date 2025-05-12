@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TCJSGame Dino</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #gameInfo { position: fixed; top: 10px; left: 10px; color: white; }
+    </style>
+</head>
+<body>
+    <div id="gameInfo">Score: <span id="score">0</span></div>
+    <script src="https://tcjsgame.vercel.app/mat/tcjsgame-v2.js"></script>
+    <script>
+        // Initialize game display
+        const display = new Display();
+        display.start(800, 200);
+        display.backgroundColor("#333");
+
+        // Game state
+        let isJumping = false;
+        let score = 0;
+        let gameActive = true;
+        
+        // Create Dino character
+        const dino = new Component(30, 50, "#444", 100, 150, "rect");
+        dino.physics = true;
+        dino.gravity = 0.8;
+        dino.bounce = 0.1;
+        display.add(dino);
+
+        // Create ground
+        const ground = new Component(800, 20, "#666", 0, 180);
+        display.add(ground);
+
+        // Sound effects
+        const jumpSound = new Sound("https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg");
+        const gameOverSound = new Sound("https://actions.google.com/sounds/v1/cartoon/cartoon_fail_string.ogg");
+
+        // Dino movement functions
+        function jump() {
+            if (!isJumping && dino.y >= 130) {
+                dino.speedY = -12;
+                isJumping = true;
+                jumpSound.play();
+            }
+        }
+
+        function duck() {
+            dino.height = 30;
+            dino.y = 170;
+        }
+
+        function resetDino() {
+            dino.height = 50;
+            dino.y = 150;
+        }
+
+        // Obstacle management
+        function createCactus() {
+            const cactus = new Component(20, 40, "#4CAF50", 850, 160);
+            cactus.type = "rect";
+            display.add(cactus);
+            move.glideX(cactus, 4, -100);
+        }
+
+        // Set up game loop
+        setInterval(() => {
+            if (gameActive) {
+                if (Math.random() < 0.02) createCactus();
+            }
+        }, 1000);
+
+        // Input handling
+        window.addEventListener('keydown', (e) => {
+            if (e.keyCode === 32) jump();         // Spacebar
+            if (e.keyCode === 40) duck();          // Down arrow
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.keyCode === 40) resetDino();
+        });
+
+        // Update function
+        function update() {
+            if (!gameActive) return;
+            
+            // Score increment
+            score++;
+            document.getElementById('score').textContent = score;
+            
+            // Ground collision
+            if (dino.crashWith(ground)) {
+                isJumping = false;
+                dino.y = 150;
+            }
+            
+            // Obstacle collision
+            comm.forEach(obj => {
+                if (obj !== ground && dino.crashWith(obj)) {
+                    gameActive = false;
+                    display.stop();
+                    gameOverSound.play();
+                    document.getElementById('gameInfo').innerHTML += "<br>Game Over! Refresh to restart";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
