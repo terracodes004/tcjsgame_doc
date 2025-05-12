@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dino Game Code Walkthrough</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .code-section {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .explanation {
+            color: #666;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #4CAF50;
+        }
+        h2 { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <h1>Dino Game Code Breakdown</h1>
+    
+    <!-- STEP 1: Framework Setup -->
+    <div class="code-section">
+        <h2>1. Framework Initialization</h2>
+        <pre><code>const display = new Display();
+display.start(800, 200);
+display.backgroundColor("#333");</code></pre>
+        <div class="explanation">
+            Creates 800x200px game canvas with dark gray background.<br>
+            The Display class handles rendering and game loop management.
+        </div>
+    </div>
+
+    <!-- STEP 2: Character Creation -->
+    <div class="code-section">
+        <h2>2. Dino Character Setup</h2>
+        <pre><code>const dino = new Component(30, 50, "#444", 100, 150, "rect");
+dino.physics = true;
+dino.gravity = 0.8;
+dino.bounce = 0.1;</code></pre>
+        <div class="explanation">
+            Creates a rectangle component with:<br>
+            - Size: 30x50px<br>
+            - Color: Dark gray (#444)<br>
+            - Position: (100,150)<br>
+            - Physics enabled with gravity and bounce properties
+        </div>
+    </div>
+
+    <!-- STEP 3: Input Handling -->
+    <div class="code-section">
+        <h2>3. Player Controls</h2>
+        <pre><code>window.addEventListener('keydown', (e) => {
+    if (e.keyCode === 32) jump();  // Spacebar
+    if (e.keyCode === 40) duck();  // Down arrow
+});</code></pre>
+        <div class="explanation">
+            Keyboard controls mapping:<br>
+            - Spacebar: Trigger jump physics<br>
+            - Down arrow: Duck mechanic (reduces height)
+        </div>
+    </div>
+
+    <!-- STEP 4: Game Mechanics -->
+    <div class="code-section">
+        <h2>4. Core Game Systems</h2>
+        <pre><code>// Jump mechanics
+function jump() {
+    if (!isJumping && dino.y >= 130) {
+        dino.speedY = -12;
+        isJumping = true;
+    }
+}
+
+// Obstacle spawning
+setInterval(() => {
+    if (Math.random() < 0.02) createCactus();
+}, 1000);</code></pre>
+        <div class="explanation">
+            Two key systems:<br>
+            1. Jump: Applies vertical speed (-12px/frame)<br>
+            2. Obstacles: Spawns cactus every ~50 frames (2% chance per second)
+        </div>
+    </div>
+
+    <!-- STEP 5: Collision Detection -->
+    <div class="code-section">
+        <h2>5. Collision System</h2>
+        <pre><code>comm.forEach(obj => {
+    if (obj !== ground && dino.crashWith(obj)) {
+        gameActive = false;
+        display.stop();
+    }
+});</code></pre>
+        <div class="explanation">
+            Uses framework's crashWith() method for AABB collision detection:<br>
+            - Checks all game objects except ground<br>
+            - Stops game on collision
+        </div>
+    </div>
+
+    <!-- Visual Demo Link -->
+    <div style="margin-top: 40px;">
+        <h3>Try the Live Demo:</h3>
+        <a href="https://tcjsgame.vercel.app/samples/dino" target="_blank">
+            Live Dino Game Demo
+        </a>
+    </div>
+</body>
+</html>
