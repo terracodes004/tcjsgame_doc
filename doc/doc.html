@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TCJSgame v2 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TCJSgame v2 Documentation - A lightweight JavaScript game engine for 2D games with canvas rendering.">
+    <meta name="keywords" content="TCJSgame, JavaScript, game engine, 2D games, canvas rendering">
+    <meta name="author" content="Owolabi kehinde">
+    <meta name="robots" content="index, follow, TCJSgame, JavaScript, game engine, 2D games, canvas rendering">
+    <meta name="googlebot" content="TCJSgame, JavaScript, game engine, 2D games, canvas rendering">
+    <link rel="icon" href="/img/icon.jpg">
+    
+     <link rel="stylesheet" href="/style.css">
+    <style>
+        body { background: #1e1e1e; color: #d4d4d4; font-family: 'Fira Mono', 'Courier New', Courier, monospace; margin: 0; }
+        header, main { max-width: 900px; margin: auto; }
+        header { padding: 2rem 0 1rem 0; text-align: center; }
+        h1, h2, h3 { color: #4fc3f7; }
+        code, pre { background: #232323; color: #fff; border-radius: 4px; padding: 2px 6px; }
+        pre { padding: 1em; overflow-x: auto; }
+        section { margin-bottom: 2em; }
+        .example { background: #232323; border-radius: 6px; padding: 1em; margin: 1em 0; }
+        .param-table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
+        .param-table th, .param-table td { border: 1px solid #444; padding: 6px 10px; }
+        .param-table th { background: #333; }
+        .note { color: #ffb300; }
+        a { color: #4fc3f7; }
+        .live-demo { background: #181818; border-radius: 6px; padding: 1em; margin: 1em 0; }
+        iframe { width: 100%; height: 350px; border: none; background: #111; }
+    </style>
+   
+</head>
+<body>
+<header>
+    <img src="/img/icon.jpg" alt="TCJSgame" style="width:64px;height:64px;border-radius:50%;">
+    <h1>TCJSgame v2 Documentation</h1>
+    <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
+    <p>A lightweight JavaScript game engine for 2D games with canvas rendering.</p>
+    <p>
+        <a href="https://tcjsgame.vercel.app/mat/tcjsgamev2.js" download>Download tcjsgamev2.js</a>
+    </p>
+</header>
+<nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/doc.html">Documentation</a></li>
+            <li><a href="/download.html">Download</a></li>
+
+
+        </ul>
+    </nav>
+<main>
+    <section>
+        <h2>Getting Started</h2>
+        <p>Include the TCJSgame v2 library in your HTML:</p>
+        <pre>&lt;script src="https://tcjsgame.vercel.app/mat/tcjsgamev2.js"&gt;&lt;/script&gt;</pre>
+        <p>Then you can use the <code>Display</code>, <code>Component</code>, <code>move</code>, <code>state</code>, and other classes/functions in your scripts.</p>
+    </section>
+
+    <section>
+        <h2>Display</h2>
+        <p>Manages the game canvas, rendering, input, and game loop.</p>
+        <h3>Constructor</h3>
+        <pre>new Display()</pre>
+        <h3>Methods</h3>
+        <table class="param-table">
+            <tr><th>Method</th><th>Parameters</th><th>Description</th></tr>
+            <tr>
+                <td><code>start(width, height, parent)</code></td>
+                <td>
+                    width (number, default 480)<br>
+                    height (number, default 270)<br>
+                    parent (HTMLElement, default document.body)
+                </td>
+                <td>Initializes and displays the canvas, starts the game loop.</td>
+            </tr>
+            <tr>
+                <td><code>add(component)</code></td>
+                <td>component (Component)</td>
+                <td>Adds a component to the game.</td>
+            </tr>
+            <tr>
+                <td><code>stop()</code></td>
+                <td></td>
+                <td>Stops the game loop.</td>
+            </tr>
+            <tr>
+                <td><code>backgroundColor(color)</code></td>
+                <td>color (string)</td>
+                <td>Sets the canvas background color.</td>
+            </tr>
+            <tr>
+                <td><code>borderStyle(style)</code></td>
+                <td>style (string)</td>
+                <td>Sets the canvas border style.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Component</h2>
+        <p>Represents a game object (player, enemy, obstacle, etc).</p>
+        <h3>Constructor</h3>
+        <pre>new Component(width, height, color, x, y, type)</pre>
+        <table class="param-table">
+            <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+            <tr><td>width</td><td>number</td><td>Width of the component</td></tr>
+            <tr><td>height</td><td>number</td><td>Height of the component</td></tr>
+            <tr><td>color</td><td>string</td><td>Color or image source</td></tr>
+            <tr><td>x</td><td>number</td><td>X position</td></tr>
+            <tr><td>y</td><td>number</td><td>Y position</td></tr>
+            <tr><td>type</td><td>string</td><td>"rect", "image", or "text"</td></tr>
+        </table>
+        <h3>Properties</h3>
+        <ul>
+            <li><code>speedX</code>, <code>speedY</code>: Movement speed</li>
+            <li><code>gravity</code>: Gravity effect</li>
+            <li><code>bounce</code>: Bounce factor</li>
+            <li><code>physics</code>: Enable physics</li>
+            <li><code>angle</code>: Rotation angle (radians)</li>
+        </ul>
+        <h3>Methods</h3>
+        <ul>
+            <li><code>move()</code>: Updates position based on speed and gravity</li>
+            <li><code>update(ctx)</code>: Draws the component</li>
+            <li><code>crashWith(other)</code>: Collision detection</li>
+            <li><code>clicked()</code>: Returns true if clicked/touched</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>move Object</h2>
+        <p>Utility functions for moving and manipulating components.</p>
+        <table class="param-table">
+            <tr><th>Function</th><th>Parameters</th><th>Description</th></tr>
+            <tr>
+                <td><code>move.accelerate(id, accelX, accelY, maxSpeedX, maxSpeedY)</code></td>
+                <td>
+                    id (Component), accelX (number), accelY (number),<br>
+                    maxSpeedX (number, optional), maxSpeedY (number, optional)
+                </td>
+                <td>Accelerates a component, clamped to max speed.</td>
+            </tr>
+            <tr>
+                <td><code>move.decelerate(id, decelX, decelY)</code></td>
+                <td>id (Component), decelX (number), decelY (number)</td>
+                <td>Decelerates a component towards zero speed.</td>
+            </tr>
+            <tr>
+                <td><code>move.position(id, direction, offset)</code></td>
+                <td>id (Component), direction (string), offset (number, optional)</td>
+                <td>Positions a component at "top", "bottom", "left", "right", or "center".</td>
+            </tr>
+            <tr>
+                <td><code>move.project(id, velocity, angle, gravity)</code></td>
+                <td>id (Component), velocity (number), angle (degrees), gravity (number)</td>
+                <td>Projectile motion for a component.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>state Object</h2>
+        <p>Utility functions for querying component state.</p>
+        <table class="param-table">
+            <tr><th>Function</th><th>Parameters</th><th>Description</th></tr>
+            <tr>
+                <td><code>state.distance(id, otherid)</code></td>
+                <td>id (Component), otherid (Component)</td>
+                <td>Returns the distance between two components.</td>
+            </tr>
+            <tr>
+                <td><code>state.rect(id)</code></td>
+                <td>id (Component)</td>
+                <td>Returns [x, y, width, height] of the component.</td>
+            </tr>
+            <tr>
+                <td><code>state.physics(id)</code></td>
+                <td>id (Component)</td>
+                <td>Returns true if physics is enabled.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Example: Simple Player Movement</h2>
+        <div class="example">
+            <pre>
+&lt;script src="https://tcjsgame.vercel.app/mat/tcjsgamev2.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const display = new Display();
+display.start(600, 300);
+const player = new Component(30, 30, "blue", 100, 100, "rect");
+display.add(player);
+
+function update() {
+    if (display.keys[37]) move.accelerate(player, -0.5, 0, 5); // Left arrow
+    else if (display.keys[39]) move.accelerate(player, 0.5, 0, 5); // Right arrow
+    else move.decelerate(player, 0.3, 0);
+
+    if (display.keys[38]) move.accelerate(player, 0, -0.5, 5); // Up arrow
+    else if (display.keys[40]) move.accelerate(player, 0, 0.5, 5); // Down arrow
+    else move.decelerate(player, 0, 0.3);
+}
+&lt;/script&gt;
+            </pre>
+        </div>
+        <p class="note">Use arrow keys to move the blue square.</p>
+    </section>
+
+    <section>
+        <h2>Example: Flappy Bird Clone</h2>
+        <div class="example">
+            <pre>
+&lt;script src="https://tcjsgame.vercel.app/mat/tcjsgamev2.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const display = new Display();
+display.start(480, 320);
+const bird = new Component(30, 30, "yellow", 100, 150, "rect");
+bird.gravity = 0.5;
+bird.bounce = 0;
+bird.physics = true;
+display.add(bird);
+
+let pipes = [];
+let score = 0;
+
+function createPipe() {
+    const gap = 90;
+    const topHeight = Math.random() * 120 + 40;
+    const bottomY = topHeight + gap;
+    const bottomHeight = display.canvas.height - bottomY;
+    const topPipe = new Component(40, topHeight, "green", display.canvas.width, 0, "rect");
+    const bottomPipe = new Component(40, bottomHeight, "green", display.canvas.width, bottomY, "rect");
+    topPipe.speedX = -2;
+    bottomPipe.speedX = -2;
+    pipes.push(topPipe, bottomPipe);
+    display.add(topPipe);
+    display.add(bottomPipe);
+}
+
+function update() {
+    if (display.frameNo % 90 === 1) createPipe();
+    pipes.forEach(pipe => {
+        if (bird.crashWith(pipe)) {
+            display.stop();
+            alert("Game Over! Score: " + score);
+        }
+    });
+    pipes = pipes.filter(pipe => pipe.x + pipe.width > 0);
+    score = Math.floor(display.frameNo / 60);
+}
+
+window.addEventListener('keydown', e => {
+    if (e.keyCode === 32) { // Spacebar
+        bird.gravitySpeed = -8;
+    }
+});
+&lt;/script&gt;
+            </pre>
+        </div>
+        <p class="note">Press Spacebar to flap. Avoid the pipes!</p>
+    </section>
+
+    <section>
+        <h2>More</h2>
+        <ul>
+            <li>See <a href="https://tcjsgame.vercel.app">tcjsgame.vercel.app</a> for more examples and downloads.</li>
+            <li>Inspired by <a href="https://jgame-doc.vercel.app">jgame-doc.vercel.app</a>.</li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>
