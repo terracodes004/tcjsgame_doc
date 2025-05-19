@@ -97,9 +97,9 @@ ul{
     list-style: none;
     display: grid;
     background: linear-gradient(to right, #007BFF, #0056b3);
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     overflow-x: auto;
-    width: 100%;
+    width: auto;
     li > a{
         color: white;
         text-decoration: none;
