@@ -128,6 +128,64 @@
         <img src="img/icon.jpg" class="secimg">
     </div>
     </fieldset>
+         </fieldset>
+        <fieldset>
+    <legend>Dino Game Documentation (TCJSgame V2)</legend>
+    <div class="con">
+        <article>
+            <h2>Creating the Dino Game with TCJSgame V2</h2>
+            <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
+            <p><strong>Description:</strong> This Dino Game is built using <code>tcjsgame-v2.js</code>, a lightweight JavaScript game engine for creating 2D games with HTML5 Canvas. The engine provides classes for display management, components, physics, sprites, and utilities that make game development easier.</p>
+
+            <h3>Game Overview</h3>
+            <p>The Dino game challenges the player to jump over obstacles and survive as long as possible. The score increases over time, and a high score is stored locally using <code>localStorage</code>.</p>
+
+            <h3>Controls</h3>
+            <ul>
+                <li><strong>Spacebar</strong> – Jump</li>
+                <li><strong>Jump Button</strong> – On-screen jump control for mobile/touch users</li>
+                <li><strong>Reset Highscore</strong> – Clears stored high score</li>
+            </ul>
+
+            <h3>Main Components</h3>
+            <ul>
+                <li><strong>Display</strong> – Initializes and updates the canvas rendering loop.</li>
+                <li><strong>Component</strong> – Used for the Dino, obstacles, score, and text labels.</li>
+                <li><strong>Physics</strong> – Gravity and collision detection with <code>crashWith()</code>.</li>
+            </ul>
+
+            <h3>Game Logic</h3>
+            <ol>
+                <li><strong>Initialization</strong> – The Dino and obstacle components are added to the display.</li>
+                <li><strong>Movement</strong> – The obstacle moves left continuously; Dino jumps when triggered.</li>
+                <li><strong>Collision</strong> – If Dino collides with an obstacle, the game resets.</li>
+                <li><strong>Scoring</strong> – Score increases every second; highest score is saved in local storage.</li>
+            </ol>
+
+            <h3>Engine Features Used</h3>
+            <ul>
+                <li>Canvas-based rendering loop</li>
+                <li>Gravity simulation</li>
+                <li>Sprite and image rendering</li>
+                <li>Collision detection</li>
+            </ul>
+
+            <h3>Live Demo</h3>
+            <p>You can play the game here: 
+                <a href="https://terracodes004.github.io/tcjsgame-dino/" target="_blank">
+                    https://terracodes004.github.io/tcjsgame-dino/
+                </a>
+            </p>
+
+            <details>
+                <summary>History</summary>
+                <p>Owolabi Kehinde, the author, started learning JavaScript game development in 2023 but found initial tutorials too complex. He created his own engine called <strong>Jgame</strong> in 2023, completed it in 2024, renamed it to <strong>TCgame</strong> in 2025, and finally to <strong>TCJSgame</strong> in the same year.</p>
+            </details>
+        </article>
+        <img src="img/icon.jpg" class="secimg" alt="Game Icon">
+    </div>
+</fieldset>
+
      <fieldset>
 <fieldset>
             <legend>Documentations</legend>
@@ -228,3 +286,4 @@
      <script src="script.js"></script>
 </body>
 </html>
+
