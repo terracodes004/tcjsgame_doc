@@ -144,6 +144,7 @@
             <li><code>dino.js</code> — your game logic</li>
             <li><code>dino.html</code> — the page that loads them</li>
           </ul>
+            <details>
           In your HTML include the engine first, then your game file:
           <pre><code>&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
 &lt;script src="dino.js"&gt;&lt;/script&gt;</code></pre>
@@ -312,12 +313,7 @@ function update(){
   if(s &gt; hs){ hs = s; localStorage.setItem('hs', hs); }
 }</code></pre>
 
-      <p style="margin-top:8px">If you want, I can now:</p>
-      <ul>
-        <li>Provide a single ready-to-run HTML file that includes engine + game for beginners.</li>
-        <li>Make the tutorial collapsible (<code>&lt;details&gt;</code> per step) so it looks cleaner on the page.</li>
-        <li>Add code to animate the dino with the engine's <code>Sprite</code> class.</li>
-      </ul>
+      </details>
     </article>
     <img src="img/icon.jpg" class="secimg" alt="Game Icon">
   </div>
@@ -385,5 +381,6 @@ function update(){
      <script src="script.js"></script>
 </body>
 </html>
+
 
 
