@@ -115,8 +115,8 @@
             <div class="con">
         <article>
             <h2>TCJSGAME</h2>
-            <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
-            <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
+            <p><b>Version:</b> 2.0 | <b>Date:</b> March 12, 2025</p>
+            <p><b>Description:</b> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
                 <details>
                     <summary></summary>
                     
@@ -137,7 +137,7 @@
 
       <ol>
         <li>
-          <strong>Files & includes</strong><br>
+          <b>Files & includes</b><br>
           Create (or confirm) these files in your project:
           <ul>
             <li><code>tcjsgame-v2.js</code> — the engine</li>
@@ -151,7 +151,7 @@
         </li>
 
         <li>
-          <strong>Start the display (canvas)</strong><br>
+          <b>Start the display (canvas)</b><br>
           In <code>dino.js</code> create a <code>Display</code> and start it near the top of the file:
           <pre><code>// in dino.js
 const display = new Display();
@@ -160,7 +160,7 @@ display.start(480, 270); // width, height (optional)</code></pre>
         </li>
 
         <li>
-          <strong>Score & highscore</strong><br>
+          <b>Score & highscore</b><br>
           Create variables and add text components to show score and highscore:
           <pre><code>let s = 0;
 let hs = Number(localStorage.getItem('hs')) || 0;
@@ -173,7 +173,7 @@ display.add(hst);</code></pre>
         </li>
 
         <li>
-          <strong>Create the Dino (player)</strong><br>
+          <b>Create the Dino (player)</b><br>
           Make Dino as an image component, enable physics & gravity:
           <pre><code>const dino = new Component(37.5, 75, "img/dino.png", 0, display.canvas.height - 100, "image");
 dino.physics = true;
@@ -183,7 +183,7 @@ display.add(dino);</code></pre>
         </li>
 
         <li>
-          <strong>Create the obstacle</strong><br>
+          <b>Create the obstacle</b><br>
           Place it at the right edge and give it a negative X speed so it moves left:
           <pre><code>const obt = new Component(75/4, 75/2, "img/obt.png",
   display.canvas.width, display.canvas.height - 75/2, "image");
@@ -193,7 +193,7 @@ display.add(obt);</code></pre>
         </li>
 
         <li>
-          <strong>Increment score over time</strong><br>
+          <b>Increment score over time</b><br>
           Add a timer to reward survival:
           <pre><code>setInterval(() =&gt; {
   s += 1;
@@ -201,12 +201,12 @@ display.add(obt);</code></pre>
         </li>
 
         <li>
-          <strong>Jump controls (keyboard + button)</strong><br>
+          <b>Jump controls (keyboard + button)</b><br>
           Implement a reusable jump function and wire the spacebar and any on-screen button to it:
           <pre><code>function jump() {
   // only jump if on the ground
   if (dino.y >= display.canvas.height - dino.height) {
-    dino.gravity = -6;          // strong upward acceleration (tweak value)
+    dino.gravity = -6;          // b upward acceleration (tweak value)
     setTimeout(() =&gt; { dino.gravity = 1; }, 200); // restore gravity quickly
   }
 }
@@ -218,7 +218,7 @@ window.addEventListener('keydown', (e) =&gt; {
         </li>
 
         <li>
-          <strong>The <code>update()</code> game loop</strong><br>
+          <b>The <code>update()</code> game loop</b><br>
           The engine calls <code>update()</code> every frame. Put logic to update UI, handle ground, recycle obstacles, detect collisions, and save highscores here:
           <pre><code>function update() {
   // update text
@@ -254,7 +254,7 @@ window.addEventListener('keydown', (e) =&gt; {
         </li>
 
         <li>
-          <strong>Polish & difficulty</strong><br>
+          <b>Polish & difficulty</b><br>
           A few ideas to improve gameplay:
           <ul>
             <li>Increase <code>obt.speedX</code> or reduce the interval between spawns as <code>s</code> grows.</li>
@@ -265,18 +265,18 @@ window.addEventListener('keydown', (e) =&gt; {
         </li>
 
         <li>
-          <strong>Common bugs & tips</strong>
+          <b>Common bugs & tips</b>
           <ul>
-            <li><strong>Gravity type:</strong> Use numbers for gravity (e.g. <code>1</code>), not booleans — the engine does <code>gravitySpeed += gravity</code>.</li>
-            <li><strong>Jump tuning:</strong> If the Dino feels floaty, increase negative jump (e.g. <code>-8</code>) and shorten the time you keep negative gravity.</li>
-            <li><strong>Responsive canvas:</strong> change canvas size in <code>display.start()</code> and adjust game coordinates when size changes.</li>
-            <li><strong>Debugging:</strong> add <code>console.log()</code> for positions and collision checks while tuning.</li>
+            <li><b>Gravity type:</b> Use numbers for gravity (e.g. <code>1</code>), not booleans — the engine does <code>gravitySpeed += gravity</code>.</li>
+            <li><b>Jump tuning:</b> If the Dino feels floaty, increase negative jump (e.g. <code>-8</code>) and shorten the time you keep negative gravity.</li>
+            <li><b>Responsive canvas:</b> change canvas size in <code>display.start()</code> and adjust game coordinates when size changes.</li>
+            <li><b>Debugging:</b> add <code>console.log()</code> for positions and collision checks while tuning.</li>
           </ul>
         </li>
 
       </ol>
 
-      <h4>Quick copy-paste summary (core dino.js)</h4>
+      <b>Quick copy-paste summary (core dino.js)</b>
       <pre><code>// Minimal core (put into dino.js after including the engine)
 const display = new Display();
 display.start(480,270);
@@ -324,8 +324,8 @@ function update(){
         <div class="con">
     <article>
         <h2>TCJSGAME</h2>
-                <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
-                <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
+                <p><b>Version:</b> 2.0 | <b>Date:</b> March 12, 2025</p>
+                <p><b>Description:</b> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
                 <a href="vid/index.html - ex - Visual Studio Code 2025-03-21 02-31-19.mp4" download>Download documentation now ⏬</a> <a href="vid/index.html - ex - Visual Studio Code 2025-03-21 02-31-19.mp4" target="_blank"> View documentation now 🪟</a>
     </article>
     <iframe  width="100%" height="100%" class="secimg" src="https://www.youtube.com/embed/_BG-vd7Jh18?si=uTncx5UNh-yjJYrw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -336,8 +336,8 @@ function update(){
         <div class="con">
     <article>
         Learn TCJSgame v1 with examples.
-        <p><strong>Version:</strong> 1.0 | <strong>Date:</strong> March 12, 2025</p>
-            <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
+        <p><b>Version:</b> 1.0 | <b>Date:</b> March 12, 2025</p>
+            <p><b>Description:</b> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
             <a href="mat/doc.pdf" download>Download documentation now ⏬</a> <a href="mat/doc.pdf" target="_blank"> View documentation now 🪟</a>
         
             
@@ -381,6 +381,7 @@ function update(){
      <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
