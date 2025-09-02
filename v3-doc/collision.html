@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collisions - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <!-- full sidebar same as above -->
+  </div>
+
+  <div class="content">
+    <h1>Collisions</h1>
+    <p>
+      Collisions are a key feature of almost every game, allowing characters to walk on platforms, collect coins,
+      or take damage from enemies. TCJSgame v3 includes simple collision detection through the
+      <code>crashWith()</code> method. This checks if the current component is overlapping with another component
+      and returns <code>true</code> or <code>false</code>.
+    </p>
+    <p>
+      Collisions are based on rectangular bounding boxes. This means if two rectangles overlap on the canvas,
+      the method will detect a crash. While this isn’t pixel-perfect, it works for most 2D games and is fast
+      enough for many objects at once.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>if (component.crashWith(otherComponent)) {
+  // handle collision
+}</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const player = new Component(30, 30, "blue", 50, 50, "rect");
+const wall = new Component(100, 20, "black", 200, 300, "rect");
+display.add(player);
+display.add(wall);
+
+function update() {
+  player.x += 1;
+  if (player.crashWith(wall)) {
+    console.log("Collision detected!");
+    player.x -= 1; // stop moving
+  }
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Only rectangular collisions are supported by default.</li>
+      <li>You can combine gravity + collisions for platformer physics.</li>
+      <li>Check collisions inside <code>update()</code> for real-time results.</li>
+    </ul>
+  </div>
+</body>
+</html>
