@@ -41,31 +41,42 @@
   <div class="content">
     <h1>Move Utils</h1>
     <p>
-      TCJSgame v3 includes several small utility functions to simplify common movement patterns. These are
-      often referred to as <strong>Move Utils</strong> because they help you move components without having
-      to write repetitive code. For example, instead of manually calculating new positions based on angles,
-      you can call utility methods that handle it for you.
+      TCJSgame v3 includes special utilities to make movement more dynamic. Instead of only using 
+      <code>speedX</code> and <code>speedY</code>, you can enable angle-based movement and call the 
+      <code>moveAngle()</code> method. This lets you move objects in any direction using an angle, 
+      making it perfect for spaceships, projectiles, or rotating characters.
     </p>
     <p>
-      Some utilities include moving an object forward in a given direction, rotating around a point,
-      or following another object. These functions extend what you can do beyond simple <code>x</code> and
-      <code>y</code> adjustments, giving your games more natural motion.
+      To use this system, you must enable <code>changeAngle</code> on the component. Once this is set 
+      to <code>true</code>, you can adjust its <code>angle</code> property (in radians) or use 
+      <code>anngle</code> for shorthand. Then, call <code>moveAngle()</code> inside your 
+      <code>update()</code> loop to apply the movement.
     </p>
 
-    <h2>Example: Move Angle</h2>
-    <pre><code>player.moveAngle = 90; // direction in degrees
-player.speed = 2;      // movement speed</code></pre>
+    <h2>Syntax</h2>
+    <pre><code>component.changeAngle = true;
+component.angle = Math.PI / 2; // 90 degrees in radians
+component.moveAngle();</code></pre>
 
-    <h2>Example: Follow</h2>
-    <pre><code>function update() {
-  enemy.follow(player, 1.5); // move enemy toward player
+    <h2>Example</h2>
+    <pre><code>const ship = new Component(30, 30, "red", 100, 100, "rect");
+ship.changeAngle = true;
+ship.speed = 3;
+display.add(ship);
+
+function update() {
+  if (display.keys[39]) ship.angle += 0.05; // rotate right
+  if (display.keys[37]) ship.angle -= 0.05; // rotate left
+  
+  ship.moveAngle(); // apply angle-based movement
 }</code></pre>
 
     <h2>Notes</h2>
     <ul>
-      <li><code>moveAngle</code> works in degrees, where 0 = right, 90 = down.</li>
-      <li>Use <code>speed</code> to control how fast an object moves along its angle.</li>
-      <li>Following is great for enemies, missiles, or homing projectiles.</li>
+      <li><code>moveAngle()</code> replaces the normal <code>move()</code> function.</li>
+      <li><code>angle</code> is in radians (π/2 = 90°, π = 180°).</li>
+      <li>Set <code>speed</code> to control how fast the component moves along its angle.</li>
+      <li>Use keyboard input to adjust the angle dynamically for rotating controls.</li>
     </ul>
   </div>
 </body>
