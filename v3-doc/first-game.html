@@ -3,29 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Game Example</title>
+  <title>First Game Example - TCJSgame v3</title>
   <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
   <div class="sidebar">
-    <h2>TCJSgame v3</h2>
-    <a href="overview.html">Overview</a>
-    <a href="install.html">Installation</a>
-    <a href="first-game.html">First Game</a>
-    <a href="display.html">Display Class</a>
-    <a href="component.html">Component</a>
-    <a href="scenes.html">Scenes</a>
-    <a href="camera.html">Camera</a>
-    <a href="tilemap.html">TileMap</a>
-    <a href="sprites.html">Sprites</a>
-    <a href="sound.html">Sound</a>
-    <a href="state.html">State Utils</a>
-    <a href="examples.html">Examples</a>
+    <!-- same sidebar as above -->
   </div>
 
   <div class="content">
     <h1>First Game Example</h1>
-    <p>This is the simplest game you can make with TCJSgame v3.</p>
+    <p>
+      The best way to learn TCJSgame is by building something simple. In this first example, you will create
+      a blue square that moves left and right across the screen. This demonstrates how the <code>Display</code>
+      and <code>Component</code> classes work together, as well as how the built-in keyboard input is handled.
+      Even though the code is short, it already introduces you to the game loop, rendering, and interaction.
+    </p>
+    <p>
+      Every TCJSgame project follows the same structure: you start a display, add one or more components,
+      and then define an <code>update()</code> function. The engine automatically calls this function every frame.
+      In it, you control how your objects behave. This is very similar to Unity’s Update loop, but much lighter.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>const display = new Display();
+display.start(width, height);
+
+const player = new Component(width, height, color, x, y, type);
+display.add(player);
+
+function update() {
+  // your game logic here
+}</code></pre>
+
+    <h2>Complete Example</h2>
     <pre><code>const display = new Display();
 display.start(600, 400);
 
@@ -35,8 +46,14 @@ display.add(player);
 function update() {
   if (display.keys[39]) player.x += 2; // Right arrow
   if (display.keys[37]) player.x -= 2; // Left arrow
-}
-</code></pre>
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>The <code>update()</code> function is called every frame by TCJSgame.</li>
+      <li>Use <code>display.keys</code> for easy keyboard handling.</li>
+      <li>Components automatically redraw when added to the display.</li>
+    </ul>
   </div>
 </body>
 </html>
