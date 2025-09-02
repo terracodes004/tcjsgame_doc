@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Input - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <!-- sidebar -->
+  </div>
+
+  <div class="content">
+    <h1>Keyboard Input</h1>
+    <p>
+      TCJSgame includes built-in keyboard handling so you don’t need to write event listeners manually.
+      The <code>display.keys</code> object automatically tracks which keys are currently pressed.
+      You can simply check <code>display.keys[keyCode]</code> inside your <code>update()</code> function.
+    </p>
+    <p>
+      Key codes are based on standard JavaScript values: 37 = left arrow, 38 = up, 39 = right, 40 = down,
+      and 32 = space bar. This system works well for simple control schemes and avoids the need to handle
+      <code>keydown</code> and <code>keyup</code> events yourself.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>if (display.keys[37]) { player.x -= 2; } // left arrow</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const player = new Component(30, 30, "blue", 50, 50, "rect");
+display.add(player);
+
+function update() {
+  if (display.keys[39]) player.x += 2; // right
+  if (display.keys[37]) player.x -= 2; // left
+  if (display.keys[38]) player.y -= 2; // up
+  if (display.keys[40]) player.y += 2; // down
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Use arrow keys, WASD, or any key code.</li>
+      <li>Multiple keys can be pressed simultaneously.</li>
+      <li>For smoother movement, update speed variables instead of directly setting x and y.</li>
+    </ul>
+  </div>
+</body>
+</html>
