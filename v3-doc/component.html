@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Class - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
+  </div>
+
+  <div class="content">
+    <h1>Component Class</h1>
+    <p>
+      A <strong>Component</strong> is any object in your game world. It can be a rectangle, text, or image,
+      depending on the type you specify. Components have properties such as <code>x</code>, <code>y</code>,
+      <code>width</code>, <code>height</code>, <code>color</code>, and motion variables like <code>speedX</code>
+      and <code>speedY</code>. They can also interact with other components through collision detection.
+    </p>
+    <p>
+      Creating a component is straightforward. For example, a red box can be created using the
+      <code>"rect"</code> type. If you want text, use <code>"text"</code>. For images, you can pass in
+      a source path. Once created, add the component to the display so that it will be drawn every frame.
+      You can then change its properties inside the <code>update()</code> function.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>const obj = new Component(width, height, color, x, y, type);</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const player = new Component(50, 50, "red", 100, 100, "rect");
+display.add(player);
+
+function update() {
+  player.x += 1;
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Valid types include <code>"rect"</code>, <code>"text"</code>, and <code>"image"</code>.</li>
+      <li>Components can have physics properties like gravity.</li>
+      <li>Use <code>crashWith()</code> to detect collisions.</li>
+    </ul>
+  </div>
+</body>
+</html>
