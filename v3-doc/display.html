@@ -1,21 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Display Class</title>
-<link rel="stylesheet" href="style.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Class - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
 <body>
-  <div class="sidebar"><h2>TCJSgame v3</h2><!-- links --></div>
+  <div class="sidebar">
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
+  </div>
+
   <div class="content">
     <h1>Display Class</h1>
-    <p>The <code>Display</code> class manages the canvas, scenes, and game loop.</p>
+    <p>
+      The <strong>Display</strong> class is the foundation of every TCJSgame project. It represents the canvas
+      and manages the game loop. You use it to start the game, clear the screen, and switch between different scenes.
+      The display is responsible for drawing all components that belong to the active scene, making it the heart
+      of rendering. Without it, nothing would appear on the screen.
+    </p>
+    <p>
+      When you create a new <code>Display</code> instance, you must call <code>start(width, height)</code>
+      to initialize the canvas. You can then use other methods such as <code>clear()</code>, 
+      <code>stop()</code>, or <code>fullScreen()</code>. In v3, gradients are supported with
+      <code>lgradient()</code> and <code>rgradient()</code>, making it easy to create visually
+      interesting backgrounds without additional images.
+    </p>
+
+    <h2>Syntax</h2>
     <pre><code>const display = new Display();
 display.start(800, 600);</code></pre>
+
     <h2>Methods</h2>
     <ul>
-      <li><code>start(w,h)</code> - start loop</li>
-      <li><code>clear()</code> - clear canvas</li>
-      <li><code>stop()</code> - stop loop</li>
-      <li><code>fullScreen()</code> / <code>exitScreen()</code></li>
-      <li><code>lgradient()</code>, <code>rgradient()</code></li>
+      <li><code>start(width, height)</code> – initialize canvas and start loop.</li>
+      <li><code>clear()</code> – clear the screen each frame.</li>
+      <li><code>stop()</code> – pause or stop the game loop.</li>
+      <li><code>fullScreen()</code> / <code>exitScreen()</code> – toggle fullscreen mode.</li>
+      <li><code>lgradient()</code> / <code>rgradient()</code> – create gradient backgrounds.</li>
+    </ul>
+
+    <h2>Example</h2>
+    <pre><code>const display = new Display();
+display.start(600, 400);
+display.lgradient("right", "blue", "lightblue");</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Always call <code>display.start()</code> before adding components.</li>
+      <li>The default background is white unless changed.</li>
+      <li>Gradients can be vertical or horizontal depending on parameters.</li>
     </ul>
   </div>
 </body>
