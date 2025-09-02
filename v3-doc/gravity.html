@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movement - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <!-- sidebar -->
+  </div>
+
+  <div class="content">
+    <h1>Movement</h1>
+    <p>
+      Movement in TCJSgame is handled by changing a component’s <code>x</code> and <code>y</code> coordinates.
+      You can do this manually inside the <code>update()</code> function, or use built-in properties such as
+      <code>speedX</code> and <code>speedY</code>. The engine automatically updates the position each frame
+      based on these speeds, which makes smooth movement easy to implement.
+    </p>
+    <p>
+      For example, setting <code>player.speedX = 2;</code> will cause the player to move to the right at
+      2 pixels per frame. If you later set it back to 0, the player stops instantly. This system allows you
+      to separate input handling from motion logic.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>component.speedX = value;
+component.speedY = value;</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const player = new Component(30, 30, "blue", 50, 50, "rect");
+display.add(player);
+
+function update() {
+  if (display.keys[39]) player.speedX = 2;
+  else if (display.keys[37]) player.speedX = -2;
+  else player.speedX = 0;
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Use <code>speedX</code> and <code>speedY</code> for smoother movement.</li>
+      <li>You can combine with gravity for platformer physics.</li>
+      <li>Acceleration can be added for gradual motion (see Acceleration topic).</li>
+    </ul>
+  </div>
+</body>
+</html>
