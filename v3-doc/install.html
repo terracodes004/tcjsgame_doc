@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Installation</title>
+  <title>Installation - TCJSgame v3</title>
   <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
@@ -12,26 +12,69 @@
     <a href="overview.html">Overview</a>
     <a href="install.html">Installation</a>
     <a href="first-game.html">First Game</a>
-    <a href="display.html">Display Class</a>
+    <a href="display.html">Display</a>
     <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
     <a href="scenes.html">Scenes</a>
     <a href="camera.html">Camera</a>
-    <a href="tilemap.html">TileMap</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
     <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
     <a href="sound.html">Sound</a>
-    <a href="state.html">State Utils</a>
-    <a href="examples.html">Examples</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
   </div>
 
   <div class="content">
     <h1>Installation</h1>
-    <p>Since TCJSgame is not available on CDN or NPM, you must include it manually.</p>
-    <ol>
-      <li>Download <a href="/download.html"><code>tcjsgame-v3.js</code></a> and place it in your project folder.</li>
-      <li>Include it in your HTML file before your game script.</li>
-    </ol>
-    <pre><code>&lt;script src="tcjsgame-v3.js"&gt;&lt;/script&gt;
+    <p>
+      Unlike many JavaScript frameworks, <strong>TCJSgame v3</strong> is not available on a CDN or through npm.
+      This means installation is simple but entirely manual. You only need to download the engine file and include
+      it in your project. This approach is beneficial because it keeps your projects lightweight and offline-friendly.
+      It also ensures you have full control over the engine version, so your code will not break if someone updates
+      an external library. Many beginner developers appreciate this direct approach because it avoids complicated
+      setup steps.
+    </p>
+    <p>
+      To install, first download the file <a href="/download.html"><code>tcjsgame-v3.js</code></a> and place it inside your project folder.
+      You may want to organize your files by creating a <code>js/</code> or <code>scripts/</code> directory,
+      but this is optional. Once the file is in your project, link it in your HTML before your own game script.
+      The order is important: the engine must load first so your code can access its classes.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>&lt;!-- Load the engine --&gt;
+&lt;script src="tcjsgame-v3.js"&gt;&lt;/script&gt;
+
+&lt;!-- Load your own game code --&gt;
 &lt;script src="game.js"&gt;&lt;/script&gt;</code></pre>
+
+    <h2>Example Project Structure</h2>
+    <pre><code>project-folder/
+  index.html
+  tcjsgame-v3.js
+  game.js
+  stylee.css</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>You can rename <code>tcjsgame-v3.js</code> but make sure to update the script tag.</li>
+      <li>Always load the engine before your game file.</li>
+      <li>No internet connection is required — everything runs locally.</li>
+    </ul>
   </div>
 </body>
 </html>
