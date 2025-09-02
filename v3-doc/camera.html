@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <!-- same sidebar -->
+  </div>
+
+  <div class="content">
+    <h1>Camera</h1>
+    <p>
+      The <strong>Camera</strong> class in TCJSgame v3 allows you to create scrolling worlds larger than the canvas.
+      By default, everything is drawn relative to the canvas, but with a camera you can move the "view window"
+      across a much bigger game map. This is essential for platformers, RPGs, and side-scrollers.
+    </p>
+    <p>
+      To use a camera, create it with the same dimensions as your canvas. Then call <code>camera.follow(component)</code>
+      to make it track a specific object, usually the player. The camera automatically shifts the drawing origin
+      so that the player remains centered (or offset if you prefer). You can also move the camera manually by changing
+      <code>camera.x</code> and <code>camera.y</code>.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>const camera = new Camera(width, height);
+camera.follow(component);</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const display = new Display();
+display.start(800, 400);
+
+const player = new Component(30, 30, "red", 100, 100, "rect");
+display.add(player);
+
+const camera = new Camera(800, 400);
+camera.follow(player);
+
+function update() {
+  if (display.keys[39]) player.x += 3;
+  if (display.keys[37]) player.x -= 3;
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>The camera only affects drawing, not collision detection.</li>
+      <li>You can use <code>camera.zoom</code> to zoom in or out.</li>
+      <li>Combine with <code>TileMap</code> for scrolling maps.</li>
+    </ul>
+  </div>
+</body>
+</html>
