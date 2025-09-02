@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backgrounds - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
+  </div>
+
+  <div class="content">
+    <h1>Backgrounds</h1>
+    <p>
+      A good background sets the stage for your game and helps create the right atmosphere. TCJSgame v3 
+      gives you multiple options for backgrounds: solid colors, gradient fills, and even image-based 
+      scrolling backgrounds. You can either draw a background as a <code>Component</code> or use the 
+      <code>display.background</code> property.
+    </p>
+    <p>
+      Using image backgrounds allows you to simulate parallax effects where the scenery scrolls at a 
+      different speed than the player, giving a sense of depth. Gradients, on the other hand, are perfect 
+      for simple skies or abstract designs. Since backgrounds are just components, you can animate them, 
+      layer them, or switch them out between scenes.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>// solid color
+display.background = "lightblue";
+
+// gradient background
+const gradient = display.context.createLinearGradient(0, 0, 0, display.canvas.height);
+gradient.addColorStop(0, "skyblue");
+gradient.addColorStop(1, "white");
+display.background = gradient;
+
+// image background
+const bg = new Component(800, 400, "background.png", 0, 0, "image");
+display.add(bg, 0);
+</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const bg = new Component(800, 400, "forest.png", 0, 0, "image");
+display.add(bg);
+
+const player = new Component(30, 30, "red", 100, 100, "rect");
+display.add(player);
+
+function update() {
+  if (display.keys[39]) player.x += 2;
+  // move background slower for parallax
+  bg.x -= 1;
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>You can use gradients or images for variety.</li>
+      <li>Backgrounds should usually be added to Scene 0.</li>
+      <li>For parallax, move the background at a slower rate than the player.</li>
+    </ul>
+  </div>
+</body>
+</html>
