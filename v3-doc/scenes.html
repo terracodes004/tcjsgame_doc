@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenes - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
+  </div>
+
+  <div class="content">
+    <h1>Scenes</h1>
+    <p>
+      A <strong>Scene</strong> in TCJSgame represents a collection of components that are drawn together.
+      Scenes allow you to separate your game into logical sections such as menus, levels, pause screens,
+      and cutscenes. Only one scene is active at a time, and switching between them is extremely simple.
+      This makes it easy to organize complex projects without cluttering your code.
+    </p>
+    <p>
+      By default, the engine creates Scene 0, which is active when the game starts. When you add a component
+      without specifying a scene index, it is automatically added to Scene 0. If you want to organize your
+      game, you can add components to different scenes and then call <code>display.scene(index)</code> to switch.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>display.add(component, sceneIndex);
+display.scene(sceneIndex);</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>const menuText = new Component("30px", "Arial", "black", 200, 200, "text");
+menuText.text = "Press Space to Start";
+display.add(menuText, 0); // menu scene
+
+const player = new Component(30, 30, "blue", 50, 50, "rect");
+display.add(player, 1); // game scene
+
+function update() {
+  if (display.keys[32]) { // Space key
+    display.scene(1); // switch to game
+  }
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Scenes are indexed with numbers starting at 0.</li>
+      <li>Switching scenes hides all other scenes instantly.</li>
+      <li>You can preload assets in one scene and use them later in another.</li>
+    </ul>
+  </div>
+</body>
+</html>
