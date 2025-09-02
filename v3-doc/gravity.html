@@ -3,47 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movement - TCJSgame v3</title>
+  <title>Gravity - TCJSgame v3</title>
   <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
   <div class="sidebar">
-    <!-- sidebar -->
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
   </div>
 
   <div class="content">
-    <h1>Movement</h1>
+    <h1>Gravity</h1>
     <p>
-      Movement in TCJSgame is handled by changing a component’s <code>x</code> and <code>y</code> coordinates.
-      You can do this manually inside the <code>update()</code> function, or use built-in properties such as
-      <code>speedX</code> and <code>speedY</code>. The engine automatically updates the position each frame
-      based on these speeds, which makes smooth movement easy to implement.
+      Gravity is a built-in feature of TCJSgame v3 that simulates the effect of objects being pulled downward,
+      just like in the real world. By assigning a gravity value to a component, you can make it fall until it hits
+      another object, such as the ground or a platform. This is especially useful for platformer games, jumping
+      mechanics, or physics-based puzzles.
     </p>
     <p>
-      For example, setting <code>player.speedX = 2;</code> will cause the player to move to the right at
-      2 pixels per frame. If you later set it back to 0, the player stops instantly. This system allows you
-      to separate input handling from motion logic.
+      Each component has a <code>gravity</code> property. Setting this to a number adds that value to its vertical
+      speed (<code>speedY</code>) each frame. A higher value means faster falling. The <code>gravitySpeed</code>
+      property tracks the total pull of gravity applied so far. To make objects stop when they hit the floor,
+      you usually check for collisions with the bottom of the canvas or with another component.
     </p>
 
     <h2>Syntax</h2>
-    <pre><code>component.speedX = value;
-component.speedY = value;</code></pre>
+    <pre><code>component.gravity = value; // e.g. 0.1</code></pre>
 
     <h2>Example</h2>
     <pre><code>const player = new Component(30, 30, "blue", 50, 50, "rect");
+player.gravity = 0.2;
 display.add(player);
 
 function update() {
-  if (display.keys[39]) player.speedX = 2;
-  else if (display.keys[37]) player.speedX = -2;
-  else player.speedX = 0;
+  // The engine applies gravity automatically
+  if (player.y > display.canvas.height - player.height) {
+    player.y = display.canvas.height - player.height;
+    player.speedY = 0;
+  }
 }</code></pre>
 
     <h2>Notes</h2>
     <ul>
-      <li>Use <code>speedX</code> and <code>speedY</code> for smoother movement.</li>
-      <li>You can combine with gravity for platformer physics.</li>
-      <li>Acceleration can be added for gradual motion (see Acceleration topic).</li>
+      <li>Gravity accumulates in <code>gravitySpeed</code>.</li>
+      <li>Set <code>speedY = 0</code> when hitting the ground to stop falling.</li>
+      <li>Combine with <code>jump</code> mechanics by setting <code>speedY</code> to a negative value.</li>
     </ul>
   </div>
 </body>
