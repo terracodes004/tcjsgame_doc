@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position - TCJSgame v3</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="adding.html">Adding Components</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="movement.html">Movement</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="collision.html">Collisions</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="accel.html">Acceleration</a>
+    <a href="position.html">Position</a>
+    <a href="background.html">Backgrounds</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="visibility.html">Visibility</a>
+    <a href="state.html">State</a>
+    <a href="flappy.html">Flappy Bird</a>
+    <a href="platformer.html">Platformer</a>
+    <a href="camera-tilemap.html">Camera + TileMap</a>
+    <a href="deploy.html">Deployment</a>
+  </div>
+
+  <div class="content">
+    <h1>Position</h1>
+    <p>
+      Every component in TCJSgame has a position defined by its <code>x</code> and <code>y</code> coordinates.
+      These values represent the top-left corner of the object on the canvas. Understanding how to work with
+      positions is fundamental for moving objects, detecting collisions, and aligning elements in your game.
+    </p>
+    <p>
+      You can update positions directly, or let them be controlled by speeds, gravity, or move utilities.
+      For example, <code>player.x += 2;</code> moves the player right, while <code>player.y -= 2;</code> moves
+      it up. Positions can also be reset to teleport objects or reposition them after a collision.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre><code>component.x = value;
+component.y = value;</code></pre>
+
+    <h2>Example</h2>
+    <pre><code>player.x = 100;
+player.y = 200;
+
+function update() {
+  if (display.keys[39]) player.x += 2;
+}</code></pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Coordinates are measured from the top-left corner of the canvas.</li>
+      <li>Use positions to reset a character to a spawn point.</li>
+      <li>Combine with camera for scrolling levels.</li>
+    </ul>
+  </div>
+</body>
+</html>
