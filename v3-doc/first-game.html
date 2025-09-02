@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Game Example</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame v3</h2>
+    <a href="overview.html">Overview</a>
+    <a href="install.html">Installation</a>
+    <a href="first-game.html">First Game</a>
+    <a href="display.html">Display Class</a>
+    <a href="component.html">Component</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="camera.html">Camera</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="sound.html">Sound</a>
+    <a href="state.html">State Utils</a>
+    <a href="examples.html">Examples</a>
+  </div>
+
+  <div class="content">
+    <h1>First Game Example</h1>
+    <p>This is the simplest game you can make with TCJSgame v3.</p>
+    <pre><code>const display = new Display();
+display.start(600, 400);
+
+const player = new Component(30, 30, "blue", 50, 50, "rect");
+display.add(player);
+
+function update() {
+  if (display.keys[39]) player.x += 2; // Right arrow
+  if (display.keys[37]) player.x -= 2; // Left arrow
+}
+</code></pre>
+  </div>
+</body>
+</html>
