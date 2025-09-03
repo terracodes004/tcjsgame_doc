@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCJSgame Physics</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame Docs</h2>
+    <a href="overview.html">Overview</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="movement.html">Movement</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="state-utils.html">State Utils</a>
+    <a href="collision.html">Collision</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="camera.html">Camera</a>
+    <a href="background.html">Background</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="fullscreen.html">Fullscreen</a>
+    <a href="physics.html" class="active">Physics</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="bouncing.html">Bouncing</a>
+    <a href="utilities.html">Utilities</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="references.html">References</a>
+  </div>
+
+  <div class="content">
+    <h1>Physics in TCJSgame</h1>
+    <p>
+      TCJSgame allows you to simulate <strong>realistic movement</strong> by enabling physics
+      on any <code>Component</code>. When physics is enabled, the engine will
+      automatically apply <code>gravity</code> and <code>bounce</code>
+      calculations to the object. This makes it easy to create platformer-like
+      mechanics where objects fall, land, and react to the ground.
+    </p>
+
+    <h2>Enabling Physics</h2>
+    <p>
+      To use physics, simply set <code>component.physics = true</code>. You can
+      also configure the <code>gravity</code> and <code>bounce</code>
+      properties:
+    </p>
+    <pre><code>
+let display = new Display();
+display.start();
+
+let ball = new Component(30, 30, "red", 50, 50, "rect");
+ball.physics = true;     // enable physics
+ball.gravity = 0.2;      // pull downwards each frame
+ball.bounce = 0.6;       // lose 40% of speed when bouncing
+
+display.add(ball, 0);
+
+function update() {
+  ball.hitBottom(); // prevents falling through the floor
+}
+    </code></pre>
+
+    <h2>Physics Properties</h2>
+    <ul>
+      <li><code>physics</code> → Enable or disable physics (default: <code>false</code>)</li>
+      <li><code>gravity</code> → Controls downward pull (default: <code>0</code>)</li>
+      <li><code>gravitySpeed</code> → Internal value tracking fall speed</li>
+      <li><code>bounce</code> → Controls how much energy is preserved after a bounce (0–1)</li>
+    </ul>
+
+    <h2>Example: Bouncing Ball</h2>
+    <pre><code>
+function update() {
+  ball.hitBottom();
+}
+    </code></pre>
+    <p>
+      In this example, the ball falls under gravity and bounces when it reaches
+      the bottom of the canvas. You can experiment with <code>gravity</code> and
+      <code>bounce</code> values to achieve different effects, such as heavy
+      objects that hardly bounce, or light objects that bounce more.
+    </p>
+
+    <div class="note">
+      <strong>Note:</strong> If <code>physics</code> is disabled, the component
+      moves only according to its <code>speedX</code> and <code>speedY</code>
+      values, without any gravity or bounce applied.
+    </div>
+  </div>
+</body>
+</html>
