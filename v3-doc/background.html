@@ -81,14 +81,15 @@ display.borderSize("5px");
       animated sprites on top creates depth and improves the game’s visual
       design.
     </p>
-    <p>
-      Keep in mind that these background methods are not redrawn every frame in
-      the <code>update()</code> loop like components are. Instead, they style the
-      canvas itself, which makes them very efficient for static or gradient
-      backgrounds. If you need dynamic backgrounds that move or animate, you
-      should use a <code>Component</code> of type <code>"image"</code> instead
-      and update its position manually.
-    </p>
+
+    <div class="note">
+      <strong>Note:</strong> Backgrounds in TCJSgame are styled using CSS on the
+      canvas element, not drawn per frame like components. This makes them very
+      efficient, but it also means they do not move or animate automatically.
+      For scrolling or animated backgrounds, you should create a
+      <code>Component</code> of type <code>"image"</code> and update its
+      position inside the <code>update()</code> loop.
+    </div>
   </div>
 </body>
 </html>
