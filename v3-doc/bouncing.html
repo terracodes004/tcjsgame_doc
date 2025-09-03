@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCJSgame Bouncing</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame Docs</h2>
+    <a href="overview.html">Overview</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="movement.html">Movement</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="state-utils.html">State Utils</a>
+    <a href="collision.html">Collision</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="camera.html">Camera</a>
+    <a href="background.html">Background</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="fullscreen.html">Fullscreen</a>
+    <a href="physics.html">Physics</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="bouncing.html" class="active">Bouncing</a>
+    <a href="utilities.html">Utilities</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="references.html">References</a>
+  </div>
+
+  <div class="content">
+    <h1>Bouncing in TCJSgame</h1>
+    <p>
+      Bouncing adds life to your objects by making them react when they hit the
+      bottom of the canvas. In TCJSgame, you control bouncing with two key
+      elements: the <code>bounce</code> property and the
+      <code>hitBottom()</code> method.
+    </p>
+
+    <h2>The Bounce Property</h2>
+    <p>
+      Each <code>Component</code> has a <code>bounce</code> value that
+      determines how much energy is retained when it collides with the floor:
+    </p>
+    <ul>
+      <li><code>bounce = 0</code> → no bounce, the object just stops</li>
+      <li><code>bounce = 1</code> → perfect bounce, the object returns with the same speed</li>
+      <li><code>0 &lt; bounce &lt; 1</code> → partial bounce, speed is reduced</li>
+    </ul>
+
+    <h2>Using hitBottom()</h2>
+    <p>
+      The <code>hitBottom()</code> method checks if the object has reached the
+      bottom of the canvas. If so, it adjusts the <code>y</code> position and
+      applies the bounce effect automatically.
+    </p>
+
+    <h2>Example: Bouncing Ball</h2>
+    <pre><code>
+let display = new Display();
+display.start();
+
+let ball = new Component(30, 30, "red", 100, 0, "rect");
+ball.physics = true;
+ball.gravity = 0.3;
+ball.bounce = 0.7;  // keep 70% of speed after bounce
+
+display.add(ball, 0);
+
+function update() {
+  ball.hitBottom(); // bounce at the bottom
+}
+    </code></pre>
+
+    <p>
+      In this example, the ball falls under gravity and bounces when it hits the
+      bottom. Because <code>bounce</code> is less than 1, it will gradually lose
+      energy and come to rest.
+    </p>
+
+    <h2>Experimenting With Bounce</h2>
+    <p>
+      Try different <code>bounce</code> values:
+    </p>
+    <ul>
+      <li><code>0.2</code> → heavy ball, quickly stops after a small bounce</li>
+      <li><code>0.5</code> → realistic bounce, like a basketball</li>
+      <li><code>1</code> → endless bouncing with no energy loss</li>
+    </ul>
+
+    <div class="note">
+      <strong>Note:</strong> Bouncing only occurs when you call
+      <code>hitBottom()</code> inside your game’s <code>update()</code> loop. If
+      you forget this, the object will fall through the bottom instead of
+      bouncing.
+    </div>
+  </div>
+</body>
+</html>
