@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TCJSgame Advanced</title>
+  <title>TCJSgame References</title>
   <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
@@ -31,72 +31,75 @@
     <a href="gravity.html">Gravity</a>
     <a href="bouncing.html">Bouncing</a>
     <a href="utilities.html">Utilities</a>
-    <a href="advanced.html" class="active">Advanced</a>
-    <a href="references.html">References</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="references.html" class="active">References</a>
   </div>
 
   <div class="content">
-    <h1>Advanced Features in TCJSgame</h1>
+    <h1>TCJSgame Reference Guide</h1>
     <p>
-      TCJSgame provides many advanced features that allow developers to go
-      beyond simple object creation and movement. These features help in
-      creating more dynamic, optimized, and professional-quality games. While
-      beginners can focus on components and physics, advanced users can take
-      advantage of custom rendering, angle-based movement, smooth camera
-      following, and procedural tile manipulation.
+      This page is a quick reference to all the main classes, properties, and
+      methods in TCJSgame. Use it as a cheat sheet when coding your games. For
+      detailed explanations and examples, see the individual topic pages in this
+      documentation.
     </p>
 
-    <h2>Angle-Based Movement</h2>
-    <p>
-      Normally, components move by updating <code>speedX</code> and
-      <code>speedY</code>. However, the <code>moveAngle()</code> function lets
-      you move based on an angle, making it easier to implement rotation-based
-      physics such as vehicles, bullets, or rotating objects.
-    </p>
-    <pre><code>
-player.angle = Math.PI / 4; // 45 degrees
-player.speedX = 3;
-player.speedY = 3;
-player.moveAngle();
-    </code></pre>
+    <h2>Display</h2>
+    <ul>
+      <li><code>start(width, height, parent)</code></li>
+      <li><code>stop()</code></li>
+      <li><code>clear()</code></li>
+      <li><code>fullScreen()</code>, <code>exitScreen()</code></li>
+      <li><code>backgroundColor(color)</code>, <code>lgradient()</code>, <code>rgradient()</code></li>
+      <li><code>tileMap()</code></li>
+      <li><code>add(component, scene)</code></li>
+    </ul>
 
-    <h2>Smooth Camera Following</h2>
-    <p>
-      The <code>Camera</code> class can follow a target, either snapping directly
-      or moving smoothly with interpolation. This allows you to create
-      side-scrolling or open-world maps where the view tracks the player.
-    </p>
-    <pre><code>
-display.camera.follow(player, true); // Smooth follow
-    </code></pre>
+    <h2>Component</h2>
+    <ul>
+      <li>Properties: <code>x</code>, <code>y</code>, <code>width</code>, <code>height</code>, <code>color</code>, <code>type</code>, <code>angle</code>, <code>physics</code>, <code>gravity</code>, <code>gravitySpeed</code>, <code>bounce</code></li>
+      <li>Methods: <code>update()</code>, <code>bUpdate()</code>, <code>move()</code>, <code>moveAngle()</code>, <code>hitBottom()</code>, <code>stopMove()</code>, <code>clicked()</code>, <code>crashWith(other)</code>, <code>hide()</code>, <code>show()</code></li>
+    </ul>
 
-    <h2>Dynamic TileMap Editing</h2>
-    <p>
-      Tile maps are not fixed; you can add, remove, or replace tiles during
-      gameplay. This makes it possible to build destructible terrain, place
-      items dynamically, or generate levels procedurally.
-    </p>
-    <pre><code>
-// Add tile at position (x=5, y=3)
-display.tileFace.add(2, 5, 3);
+    <h2>Camera</h2>
+    <ul>
+      <li>Properties: <code>x</code>, <code>y</code>, <code>worldWidth</code>, <code>worldHeight</code></li>
+      <li>Method: <code>follow(target, smooth)</code></li>
+    </ul>
 
-// Remove tile at (x=2, y=1)
-display.tileFace.remove(2, 1);
-    </code></pre>
+    <h2>TileMap</h2>
+    <ul>
+      <li><code>show()</code>, <code>tiles(id)</code>, <code>crashWith(obj, id)</code></li>
+      <li><code>add(id, tx, ty)</code>, <code>remove(tx, ty)</code>, <code>rTile(tx, ty)</code></li>
+    </ul>
 
-    <h2>Custom Utilities</h2>
-    <p>
-      You are not limited to the built-in <code>move</code> and
-      <code>state</code> utilities. Since TCJSgame is written in plain
-      JavaScript, you can extend it by writing your own helpers that operate on
-      components or the display context. This allows you to build custom
-      mechanics such as homing missiles, health systems, or particle effects.
-    </p>
+    <h2>Sound</h2>
+    <ul>
+      <li><code>play()</code>, <code>stop()</code></li>
+    </ul>
+
+    <h2>Move Utilities</h2>
+    <ul>
+      <li><code>teleport()</code>, <code>glideX()</code>, <code>glideY()</code>, <code>glideTo()</code></li>
+      <li><code>project()</code>, <code>pointTo()</code>, <code>accelerate()</code>, <code>decelerate()</code>, <code>position()</code></li>
+      <li><code>hitObject()</code>, <code>bound()</code>, <code>boundTo()</code></li>
+    </ul>
+
+    <h2>State Utilities</h2>
+    <ul>
+      <li><code>distance()</code>, <code>rect()</code>, <code>physics()</code>, <code>changeAngle()</code>, <code>Angle()</code>, <code>pos()</code></li>
+    </ul>
+
+    <h2>Sprites</h2>
+    <ul>
+      <li>Properties: <code>frameWidth</code>, <code>frameHeight</code>, <code>frameCount</code>, <code>frameSpeed</code></li>
+      <li>Methods: <code>update()</code>, <code>draw(ctx, x, y)</code></li>
+    </ul>
 
     <div class="note">
-      <strong>Note:</strong> Advanced features are optional, but they unlock the
-      full potential of TCJSgame. Start small, then gradually introduce these
-      techniques to add polish and complexity to your projects.
+      <strong>Note:</strong> This reference is not a replacement for learning.
+      It is meant as a quick lookup tool once you are already familiar with how
+      each feature works.
     </div>
   </div>
 </body>
