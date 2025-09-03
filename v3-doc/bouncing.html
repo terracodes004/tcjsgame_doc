@@ -70,12 +70,31 @@ display.start();
 let ball = new Component(30, 30, "red", 100, 0, "rect");
 ball.physics = true;
 ball.gravity = 0.3;
+ball.bounce = 0.7;  // keep 70% of speed after bounce
+
 display.add(ball, 0);
 
 function update() {
   ball.hitBottom(); // bounce at the bottom
 }
     </code></pre>
+
+    <p>
+      In this example, the ball falls under gravity and bounces when it hits the
+      bottom. Because <code>bounce</code> is less than 1, it will gradually lose
+      energy and come to rest.
+    </p>
+
+    <h2>Experimenting With Bounce</h2>
+    <p>
+      Try different <code>bounce</code> values:
+    </p>
+    <ul>
+      <li><code>0.2</code> → heavy ball, quickly stops after a small bounce</li>
+      <li><code>0.5</code> → realistic bounce, like a basketball</li>
+      <li><code>1</code> → endless bouncing with no energy loss</li>
+    </ul>
+
     <div class="note">
       <strong>Note:</strong> Bouncing only occurs when you call
       <code>hitBottom()</code> inside your game’s <code>update()</code> loop. If
