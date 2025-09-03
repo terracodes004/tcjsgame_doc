@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCJSgame Utilities</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame Docs</h2>
+    <a href="overview.html">Overview</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="movement.html">Movement</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="state-utils.html">State Utils</a>
+    <a href="collision.html">Collision</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="camera.html">Camera</a>
+    <a href="background.html">Background</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="fullscreen.html">Fullscreen</a>
+    <a href="physics.html">Physics</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="bouncing.html">Bouncing</a>
+    <a href="utilities.html" class="active">Utilities</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="references.html">References</a>
+  </div>
+
+  <div class="content">
+    <h1>Utilities in TCJSgame</h1>
+    <p>
+      The utilities in TCJSgame are a collection of helper functions that make
+      it easier to control objects, check states, and perform common operations.
+      They are grouped mainly into two objects: <code>move</code> for movement
+      helpers and <code>state</code> for checking component states.
+    </p>
+
+    <h2>Move Utilities</h2>
+    <p>
+      The <code>move</code> object contains methods that extend the basic
+      movement system. Examples include teleporting objects, gliding them
+      smoothly, pointing towards targets, and simulating projectile motion.
+    </p>
+
+    <h3>Examples</h3>
+    <pre><code>
+// Teleport instantly
+move.teleport(player, 200, 100);
+
+// Glide smoothly to a point
+move.glideTo(player, 2, 300, 200);
+
+// Point towards target
+move.pointTo(player, mouse.x, mouse.y);
+
+// Launch as a projectile
+move.project(player, 10, 60, 0.2);
+    </code></pre>
+
+    <h2>State Utilities</h2>
+    <p>
+      The <code>state</code> object provides quick access to component
+      information, such as position, distance from another object, angle, and
+      whether physics is enabled.
+    </p>
+
+    <h3>Examples</h3>
+    <pre><code>
+// Get distance between two components
+let d = state.distance(player, enemy);
+
+// Get current rectangle [x, y, width, height]
+let rect = state.rect(player);
+
+// Check if physics is active
+console.log(state.physics(player)); // true or false
+
+// Get angle
+console.log(state.Angle(player));
+    </code></pre>
+
+    <h2>Why Use Utilities?</h2>
+    <p>
+      These utility functions save time and keep your code cleaner. Instead of
+      writing repetitive calculations (like distance formulas or manual
+      teleportation), you can call a simple utility. This makes your game logic
+      easier to read and maintain.
+    </p>
+
+    <div class="note">
+      <strong>Note:</strong> Utilities do not run automatically. You must call
+      them from your <code>update()</code> loop or when you want the action to
+      occur.
+    </div>
+  </div>
+</body>
+</html>
