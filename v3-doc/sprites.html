@@ -38,51 +38,72 @@
   <div class="content">
     <h1>Sprites in TCJSgame</h1>
     <p>
-      Sprites are animated images used to represent characters, enemies, or
-      visual effects in a game. In TCJSgame v3, sprites are managed through the
-      <code>Sprite</code> class. This class takes a sprite sheet image and
-      automatically cycles through frames to create smooth animations.
+      Sprites are animated graphics that bring characters, objects, and effects
+      to life. In TCJSgame v3, the <code>Sprite</code> class is designed to
+      handle sprite sheet animations. A sprite sheet is a single image
+      containing multiple frames of an animation, laid out horizontally.
+      Instead of drawing each frame manually, the <code>Sprite</code> class
+      automatically cycles through them.
     </p>
     <p>
-      A sprite sheet is a single image containing multiple frames of animation,
-      placed side by side. The <code>Sprite</code> class requires you to specify
-      the frame width, frame height, number of frames, and the animation speed.
-      Once set up, the sprite can be updated every frame and drawn on the
-      canvas.
+      The constructor takes five arguments: the sprite sheet image,
+      <code>frameWidth</code>, <code>frameHeight</code>, total
+      <code>frameCount</code>, and <code>frameSpeed</code>. The
+      <code>update()</code> method moves the animation forward, while
+      <code>draw(ctx, x, y)</code> renders the current frame on the canvas.
     </p>
-    <h2>Example</h2>
+
+    <h2>Basic Example</h2>
     <pre><code>
-// Load sprite image
-let image = new Image();
-image.src = "character.png";
+// Load a sprite sheet
+let img = new Image();
+img.src = "player.png";
 
-// Create a new Sprite
-let playerSprite = new Sprite(image, 64, 64, 4, 10);
+// Create sprite: 4 frames, 64x64 each
+let playerSprite = new Sprite(img, 64, 64, 4, 8);
 
-// Update function
 function update() {
-    display.clear();
+  display.clear();
 
-    // Update sprite animation
-    playerSprite.update();
+  // Animate
+  playerSprite.update();
 
-    // Draw sprite at (100, 100)
-    playerSprite.draw(display.context, 100, 100);
+  // Draw at position (100,100)
+  playerSprite.draw(display.context, 100, 100);
 }
     </code></pre>
+
+    <h2>Combining with Components</h2>
     <p>
-      In this example, the sprite sheet <code>character.png</code> has 4 frames,
-      each 64×64 pixels. The <code>frameSpeed</code> of 10 means the sprite will
-      change frames every 10 updates, creating a controlled animation speed.
+      Since <code>Sprite</code> does not handle movement or physics, you can
+      combine it with a <code>Component</code> to make a fully interactive game
+      object. The component manages position and physics, while the sprite
+      handles animation.
     </p>
 
+    <pre><code>
+let hero = new Component(64, 64, null, 50, 50, "image");
+let heroSprite = new Sprite(img, 64, 64, 4, 6);
+
+function update() {
+  display.clear();
+
+  // Move component
+  hero.x += 2;
+
+  // Update and draw sprite at hero's position
+  heroSprite.update();
+  heroSprite.draw(display.context, hero.x, hero.y);
+}
+    </code></pre>
+
     <div class="note">
-      <strong>Note:</strong> Sprites in TCJSgame are independent from
-      <code>Component</code>. They do not have built-in movement or physics. If
-      you want your sprite to move, you should combine it with a
-      <code>Component</code> or update its position manually in the
-      <code>update()</code> loop. This separation gives you more flexibility to
-      use sprites purely for visual effects or attach them to game objects.
+      <strong>Note:</strong> The <code>Sprite</code> class only handles
+      animations. It does not include speed, gravity, or collisions. Use a
+      <code>Component</code> if you want to apply movement or physics, then
+      draw the sprite at the component’s coordinates. This separation makes it
+      easy to reuse the same sprite for multiple game objects.
+      <b>This features of TCJSgame is not fully functional.  It is not adviced to use it</b>
     </div>
   </div>
 </body>
