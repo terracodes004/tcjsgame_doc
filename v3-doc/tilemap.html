@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCJSgame Sprites</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame Docs</h2>
+    <a href="overview.html">Overview</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="movement.html">Movement</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="state-utils.html">State Utils</a>
+    <a href="collision.html">Collision</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="camera.html">Camera</a>
+    <a href="background.html">Background</a>
+    <a href="sprites.html" class="active">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="fullscreen.html">Fullscreen</a>
+    <a href="physics.html">Physics</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="bouncing.html">Bouncing</a>
+    <a href="utilities.html">Utilities</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="references.html">References</a>
+  </div>
+
+  <div class="content">
+    <h1>Sprites in TCJSgame</h1>
+    <p>
+      Sprites are animated graphics that bring characters, objects, and effects
+      to life. In TCJSgame v3, the <code>Sprite</code> class is designed to
+      handle sprite sheet animations. A sprite sheet is a single image
+      containing multiple frames of an animation, laid out horizontally.
+      Instead of drawing each frame manually, the <code>Sprite</code> class
+      automatically cycles through them.
+    </p>
+    <p>
+      The constructor takes five arguments: the sprite sheet image,
+      <code>frameWidth</code>, <code>frameHeight</code>, total
+      <code>frameCount</code>, and <code>frameSpeed</code>. The
+      <code>update()</code> method moves the animation forward, while
+      <code>draw(ctx, x, y)</code> renders the current frame on the canvas.
+    </p>
+
+    <h2>Basic Example</h2>
+    <pre><code>
+// Load a sprite sheet
+let img = new Image();
+img.src = "player.png";
+
+// Create sprite: 4 frames, 64x64 each
+let playerSprite = new Sprite(img, 64, 64, 4, 8);
+
+function update() {
+  display.clear();
+
+  // Animate
+  playerSprite.update();
+
+  // Draw at position (100,100)
+  playerSprite.draw(display.context, 100, 100);
+}
+    </code></pre>
+
+    <h2>Combining with Components</h2>
+    <p>
+      Since <code>Sprite</code> does not handle movement or physics, you can
+      combine it with a <code>Component</code> to make a fully interactive game
+      object. The component manages position and physics, while the sprite
+      handles animation.
+    </p>
+
+    <pre><code>
+let hero = new Component(64, 64, null, 50, 50, "image");
+let heroSprite = new Sprite(img, 64, 64, 4, 6);
+
+function update() {
+  display.clear();
+
+  // Move component
+  hero.x += 2;
+
+  // Update and draw sprite at hero's position
+  heroSprite.update();
+  heroSprite.draw(display.context, hero.x, hero.y);
+}
+    </code></pre>
+
+    <div class="note">
+      <strong>Note:</strong> The <code>Sprite</code> class only handles
+      animations. It does not include speed, gravity, or collisions. Use a
+      <code>Component</code> if you want to apply movement or physics, then
+      draw the sprite at the component’s coordinates. This separation makes it
+      easy to reuse the same sprite for multiple game objects.
+    </div>
+  </div>
+</body>
+</html>
