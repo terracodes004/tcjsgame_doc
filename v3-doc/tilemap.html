@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TCJSgame Sprites</title>
+  <title>TCJSgame TileMap</title>
   <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
@@ -21,8 +21,8 @@
     <a href="keyboard.html">Keyboard</a>
     <a href="camera.html">Camera</a>
     <a href="background.html">Background</a>
-    <a href="sprites.html" class="active">Sprites</a>
-    <a href="tilemap.html">TileMap</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html" class="active">TileMap</a>
     <a href="tile-collisions.html">Tile Collisions</a>
     <a href="sound.html">Sound</a>
     <a href="scenes.html">Scenes</a>
@@ -36,73 +36,67 @@
   </div>
 
   <div class="content">
-    <h1>Sprites in TCJSgame</h1>
+    <h1>TileMaps in TCJSgame</h1>
     <p>
-      Sprites are animated graphics that bring characters, objects, and effects
-      to life. In TCJSgame v3, the <code>Sprite</code> class is designed to
-      handle sprite sheet animations. A sprite sheet is a single image
-      containing multiple frames of an animation, laid out horizontally.
-      Instead of drawing each frame manually, the <code>Sprite</code> class
-      automatically cycles through them.
+      The <code>TileMap</code> system in TCJSgame allows you to build large,
+      grid-based levels using reusable tiles. Instead of drawing each block
+      manually, you provide a <code>map</code> array, a list of available
+      <code>tile</code> components, and then call
+      <code>TileMap.show()</code> to render everything automatically.
     </p>
     <p>
-      The constructor takes five arguments: the sprite sheet image,
-      <code>frameWidth</code>, <code>frameHeight</code>, total
-      <code>frameCount</code>, and <code>frameSpeed</code>. The
-      <code>update()</code> method moves the animation forward, while
-      <code>draw(ctx, x, y)</code> renders the current frame on the canvas.
+      A <code>Tile</code> is just a <code>Component</code> with extra
+      properties (<code>tx</code>, <code>ty</code>, and <code>tid</code>)
+      representing its grid position and ID. The <code>TileMap</code> class
+      calculates tile sizes based on the canvas dimensions and the number of
+      rows and columns in your map.
     </p>
 
-    <h2>Basic Example</h2>
+    <h2>Example</h2>
     <pre><code>
-// Load a sprite sheet
-let img = new Image();
-img.src = "player.png";
+// Define tiles (ID 1 = ground, ID 2 = wall)
+let ground = new Component(0, 0, "green", 0, 0, "rect");
+let wall = new Component(0, 0, "brown", 0, 0, "rect");
 
-// Create sprite: 4 frames, 64x64 each
-let playerSprite = new Sprite(img, 64, 64, 4, 8);
+// Map: 0 = empty, 1 = ground, 2 = wall
+let map = [
+  [1,1,1,1,1],
+  [1,0,0,0,1],
+  [1,0,2,0,1],
+  [1,1,1,1,1]
+];
 
-function update() {
-  display.clear();
+// Create TileMap
+let tilemap = new TileMap(display, map, [ground, wall], 480, 320);
 
-  // Animate
-  playerSprite.update();
-
-  // Draw at position (100,100)
-  playerSprite.draw(display.context, 100, 100);
+// Show the tiles
+function update(){
+	tilemap.show();
 }
     </code></pre>
 
-    <h2>Combining with Components</h2>
     <p>
-      Since <code>Sprite</code> does not handle movement or physics, you can
-      combine it with a <code>Component</code> to make a fully interactive game
-      object. The component manages position and physics, while the sprite
-      handles animation.
+      You can also edit maps dynamically:
     </p>
 
     <pre><code>
-let hero = new Component(64, 64, null, 50, 50, "image");
-let heroSprite = new Sprite(img, 64, 64, 4, 6);
+// Add a wall at (2,2)
+tilemap.add(2, 2, 2);
 
-function update() {
-  display.clear();
+// Remove a tile at (1,1)
+tilemap.remove(1, 1);
 
-  // Move component
-  hero.x += 2;
-
-  // Update and draw sprite at hero's position
-  heroSprite.update();
-  heroSprite.draw(display.context, hero.x, hero.y);
-}
+// Get all tiles of ID 1
+let groundTiles = tilemap.tiles(1);
     </code></pre>
 
     <div class="note">
-      <strong>Note:</strong> The <code>Sprite</code> class only handles
-      animations. It does not include speed, gravity, or collisions. Use a
-      <code>Component</code> if you want to apply movement or physics, then
-      draw the sprite at the component’s coordinates. This separation makes it
-      easy to reuse the same sprite for multiple game objects.
+      <strong>Note:</strong> The <code>TileMap.show()</code> method draws the
+      entire map each time it is called. If you want tiles to update along with
+      the rest of your game, you should call <code>tilemap.show()</code> inside
+      your <code>update()</code> loop. Also remember that your
+      <code>map</code> array must match the intended number of rows and columns
+      of your level, or tiles will not render correctly.
     </div>
   </div>
 </body>
