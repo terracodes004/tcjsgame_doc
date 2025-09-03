@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCJSgame Fullscreen</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>TCJSgame Docs</h2>
+    <a href="overview.html">Overview</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="display.html">Display</a>
+    <a href="component.html">Component</a>
+    <a href="movement.html">Movement</a>
+    <a href="move-utils.html">Move Utils</a>
+    <a href="state-utils.html">State Utils</a>
+    <a href="collision.html">Collision</a>
+    <a href="mouse.html">Mouse</a>
+    <a href="keyboard.html">Keyboard</a>
+    <a href="camera.html">Camera</a>
+    <a href="background.html">Background</a>
+    <a href="sprites.html">Sprites</a>
+    <a href="tilemap.html">TileMap</a>
+    <a href="tile-collisions.html">Tile Collisions</a>
+    <a href="sound.html">Sound</a>
+    <a href="scenes.html">Scenes</a>
+    <a href="fullscreen.html" class="active">Fullscreen</a>
+    <a href="physics.html">Physics</a>
+    <a href="gravity.html">Gravity</a>
+    <a href="bouncing.html">Bouncing</a>
+    <a href="utilities.html">Utilities</a>
+    <a href="advanced.html">Advanced</a>
+    <a href="references.html">References</a>
+  </div>
+
+  <div class="content">
+    <h1>Fullscreen Mode in TCJSgame</h1>
+    <p>
+      TCJSgame includes built-in support for <strong>fullscreen mode</strong>.
+      This allows your game canvas to expand and fill the entire screen, creating
+      a more immersive experience for players. You can toggle fullscreen with
+      two simple methods: <code>display.fullScreen()</code> and
+      <code>display.exitScreen()</code>.
+    </p>
+
+    <h2>Entering Fullscreen</h2>
+    <p>
+      To enable fullscreen, call the <code>fullScreen()</code> method on your
+      <code>Display</code> object. This requests the browser to display the
+      canvas at maximum size.
+    </p>
+    <pre><code>
+let display = new Display();
+display.start();
+
+function update() {
+  if (display.keys[70]) { // Press F key
+    display.fullScreen();
+  }
+}
+    </code></pre>
+
+    <h2>Exiting Fullscreen</h2>
+    <p>
+      To return to normal mode, call <code>exitScreen()</code>. This restores
+      the canvas to its original size in the webpage.
+    </p>
+    <pre><code>
+function update() {
+  if (display.keys[27]) { // Press ESC
+    display.exitScreen();
+  }
+}
+    </code></pre>
+
+    <h2>Practical Use Case</h2>
+    <p>
+      Many developers allow players to toggle fullscreen with a key such as
+      <code>F</code>. This improves usability for both desktop and mobile
+      browsers. For example, on mobile, fullscreen ensures that your game uses
+      all available space without browser chrome or scrollbars.
+    </p>
+
+    <div class="note">
+      <strong>Note:</strong> Fullscreen requests must be triggered by a user
+      action (like a key press or mouse click). Browsers usually block
+      automatic fullscreen activation for security reasons.
+    </div>
+  </div>
+</body>
+</html>
