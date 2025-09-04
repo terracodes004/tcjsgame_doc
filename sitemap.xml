@@ -1,48 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <url>
-    <loc>https://tcjsgame.vercel.app/</loc>
-    <lastmod>2025-05-20T23:10:48+00:00</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/about.html</loc>
-    <lastmod>2025-05-20T23:10:48+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/doc.html</loc>
-    <lastmod>2025-05-20T23:10:48+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/download.html</loc>
-    <lastmod>2025-05-20T23:10:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/doc/index.html</loc>
-    <lastmod>2025-05-20T23:10:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/dino.html</loc>
-    <lastmod>2025-05-20T23:10:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/mat/doc.pdf</loc>
-    <lastmod>2025-05-20T23:10:50+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://tcjsgame.vercel.app/index.html</loc>
-    <lastmod>2025-05-20T23:10:50+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/</loc>
+  <lastmod>2025-09-04T18:57:51+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/overview.html</loc>
+  <lastmod>2025-09-04T18:57:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/display.html</loc>
+  <lastmod>2025-09-04T18:57:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/component.html</loc>
+  <lastmod>2025-09-04T18:57:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/movement.html</loc>
+  <lastmod>2025-09-04T18:57:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/move-utils.html</loc>
+  <lastmod>2025-09-04T18:57:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/collision.html</loc>
+  <lastmod>2025-09-04T18:57:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/mouse.html</loc>
+  <lastmod>2025-09-04T18:57:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/keyboard.html</loc>
+  <lastmod>2025-09-04T18:57:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/camera.html</loc>
+  <lastmod>2025-09-04T18:57:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/background.html</loc>
+  <lastmod>2025-09-04T18:57:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/sprites.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/tilemap.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/tile-collisions.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/sound.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/scenes.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/fullscreen.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/physics.html</loc>
+  <lastmod>2025-09-04T18:57:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/gravity.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/bouncing.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/utilities.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/advanced.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/references.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/install.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/first-game.html</loc>
+  <lastmod>2025-09-04T18:57:55+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/adding.html</loc>
+  <lastmod>2025-09-04T18:57:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/accel.html</loc>
+  <lastmod>2025-09-04T18:57:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://tcjsgame.vercel.app/v3-doc/position.html</loc>
+  <lastmod>2025-09-04T18:57:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>
