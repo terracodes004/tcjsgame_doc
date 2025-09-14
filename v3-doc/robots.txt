@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://tcjsgame.vercel.app/v3-doc/sitemap.xml
