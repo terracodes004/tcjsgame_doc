@@ -4,7 +4,7 @@ TCJSgame is more than just a game engine — it’s a community of learners, cre
 
 ### 📌 How to Get Involved
 - 💬 **Chat with us**: Join our [Discord](https://discord.gg/YOUR-LINK) (coming soon)  
-- 🐛 **Report bugs**: Use the [GitHub Issues](https://github.com/terracodes004/tcjsgame/issues)  
+- 🐛 **Report bugs**: Use the [GitHub Issues](https://github.com/terracodes004/tcjsgame_doc/issues)  
 - 📝 **Contribute**: See our [Contributing Guide](CONTRIBUTING.md)  
 - 📜 **Community rules**: Read our [Code of Conduct](CODE_OF_CONDUCT.md)  
 
