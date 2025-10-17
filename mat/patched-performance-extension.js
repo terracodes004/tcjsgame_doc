@@ -11,7 +11,7 @@
     const originalStart = Display.prototype.start;
 
     // Override the start method with proper compatibility
-    Display.prototype.start = function(width, height, config = {}) {
+    Display.prototype.start = function(width, height,node = document.body, config = {useDelta:true, enableCulling:true, enableCaching:true}) {
         console.log('Performance Extension: Starting game with patches');
         
         // Set configuration with defaults
@@ -62,7 +62,9 @@
         
         // Call any original start logic if it exists
         if (originalStart) {
-            originalStart.call(this, width, height, config);
+            console.log(config)
+            originalStart.call(this, width, height, node);
+
         }
 
         return this;
