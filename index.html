@@ -526,6 +526,449 @@ function jump() {<br>
                     <a href="#full-tutorial" class="btn">View Full Tutorial</a>
                 </div>
             </section>
+            <!-- Add this section to your homepage for the complete Dino Game Tutorial -->
+<section class="card full-tutorial-section" id="full-tutorial">
+    <div class="card-header">
+        <h2 class="card-title">Dino Game - Complete Tutorial</h2>
+    </div>
+    <div class="card-body">
+        <div class="live-demo">
+            <h3>🎮 Live Demo</h3>
+            <p>Try the actual Dino game built with TCJSgame:</p>
+            <a href="https://terracodes004.github.io/tcjsgame-dino/" target="_blank" class="btn" style="margin: 10px 0;">
+                Play Dino Game Live
+            </a>
+        </div>
+
+        <div class="tutorial-steps">
+            <!-- HTML Setup -->
+            <div class="tutorial-step">
+                <h3>HTML File (index.html)</h3>
+                <p>Create the main HTML file with game controls and layout:</p>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Dino game - TCJSgame&lt;/title&gt;
+    &lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+            background: #f0f0f0;
+        }
+        canvas {
+            width: 75%;
+            height: 75%;
+            border: 2px solid #333;
+            background: white;
+        }
+        button {
+            width: 99%;
+            border: none;
+            padding: 12px;
+            margin: 5px 0;
+            background: #007BFF;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .gui {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 10px;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script src="dino.js"&gt;&lt;/script&gt;
+    &lt;div class="gui"&gt;
+        &lt;button onclick="jump()"&gt;Jump&lt;/button&gt;
+        &lt;button onclick="resetHighscore()" accesskey="h"&gt;
+            Reset Highscore
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </div>
+            </div>
+
+            <!-- JavaScript Game Code -->
+            <div class="tutorial-step">
+                <h3>JavaScript Game Code (dino.js)</h3>
+                <p>Create the game logic in a separate JavaScript file:</p>
+                <div class="code-block">
+// Initialize game display
+const display = new Display()
+display.start()
+
+// Setup highscore system
+if(!localStorage.hs){
+    localStorage.hs = 0
+}
+
+let s = 0  // Current score
+let hs = Number(localStorage.hs)  // High score
+display.backgroundColor("grey")
+let jumpPower = -1
+
+// Create UI components
+const score = new Component("25px", "Cambria Math", "red", 10, 40, "text")
+const hst = new Component("25px", "Consolas", "black", 240, 40, "text")
+display.add(score)
+display.add(hst)
+
+// Create player character
+const dino = new Component(75/2, 75, "img/dino.png", 0, display.canvas.height - 100, "image")
+dino.physics = true
+dino.gravity = 1
+display.add(dino)
+
+// Create obstacle
+const obt = new Component(75/4, 75/2, "img/obt.png", display.canvas.width, display.canvas.height - 75/2, "image")
+obt.speedX = -1
+display.add(obt)
+
+// Increase difficulty over time
+setInterval(() => {
+    obt.speedX -= 0.25
+}, 3000)
+
+// Score increment every second
+setInterval(() => {
+    s += 1
+}, 1000)
+
+// Jump function (used by both keyboard and button)
+function jump() {
+    if(dino.gravity == 1 && dino.y >= display.canvas.height - 75){
+        dino.gravity = jumpPower
+        s += 1  // Bonus points for jumping
+        setTimeout(() => {
+            dino.gravity = 1
+        }, 250)
+    }
+}
+
+// Reset highscore function
+function resetHighscore() {
+    let res = confirm('ARE YOU SURE YOU WANT TO RESET HIGHSCORE!!!')
+    if(res){
+        localStorage.hs = 0
+        hs = 0
+        alert('Highscore reset!')
+    }
+}
+
+// Keyboard controls
+window.addEventListener("keydown", function(e){
+    if(e.key === " "){
+        jump()
+    }
+})
+
+// Main game loop
+function update(){
+    // Update score displays
+    score.text = `Score : ${s}`
+    hst.text = `Highscore : ${hs}`
+    
+    // Keep dino on ground
+    if(dino.y >= display.canvas.height - 75){
+        dino.y = display.canvas.height - 75
+        dino.gravitySpeed = 0
+    }
+    
+    // Recycle obstacles when they go off screen
+    if(obt.x <= 0 - 75/2){
+        obt.x = display.canvas.width
+    }
+    
+    // Collision detection
+    if(dino.crashWith(obt)){
+        alert("you lose")
+        obt.x = -74
+        obt.speedX = -2
+        s = 0  // Reset score
+    }
+    
+    // Update highscore
+    if(s > hs){
+        hs = s
+        localStorage.hs = s
+    }
+}
+                </div>
+            </div>
+
+            <!-- File Structure -->
+            <div class="tutorial-step">
+                <h3>Project File Structure</h3>
+                <p>Organize your files like this:</p>
+                <div class="code-block" style="background: #2d2d2d; color: white; padding: 1rem; border-radius: 5px;">
+dino-game/
+├── index.html          # Main HTML file
+├── dino.js            # Game JavaScript code
+├── tcjsgame-v2.js     # TCJSgame engine
+└── img/
+    ├── dino.png       # Player character (37.5x75px)
+    └── obt.png        # Cactus obstacle (18.75x37.5px)
+                </div>
+            </div>
+
+            <!-- Enhanced Features -->
+            <div class="tutorial-step">
+                <h3>Enhanced Game Features</h3>
+                <p>Here are some improvements you can add to your game:</p>
+                <div class="code-block">
+// Add multiple obstacles
+const obstacles = []
+
+function createObstacle() {
+    const obstacle = new Component(75/4, 75/2, "img/obt.png", 
+        display.canvas.width, 
+        display.canvas.height - 75/2, 
+        "image")
+    obstacle.speedX = -2 - Math.random() * 2
+    display.add(obstacle)
+    obstacles.push(obstacle)
+}
+
+// Create obstacles randomly
+setInterval(createObstacle, 1500 + Math.random() * 1000)
+
+// Enhanced update function for multiple obstacles
+function update() {
+    // ... existing code ...
+    
+    // Update all obstacles
+    for(let i = obstacles.length - 1; i >= 0; i--) {
+        const obstacle = obstacles[i]
+        
+        if(obstacle.x <= -obstacle.width) {
+            display.remove(obstacle)
+            obstacles.splice(i, 1)
+        }
+        
+        if(dino.crashWith(obstacle)) {
+            gameOver()
+            break
+        }
+    }
+}
+
+function gameOver() {
+    alert(`Game Over! Final Score: ${s}`)
+    // Reset all obstacles
+    obstacles.forEach(obs => display.remove(obs))
+    obstacles.length = 0
+    s = 0
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="tutorial-features">
+            <h3>🎯 What You'll Learn</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>🏗️ Component Creation</h4>
+                    <p>Creating game objects with images and physics</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⚡ Physics System</h4>
+                    <p>Using gravity and physics for realistic movement</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎮 Input Handling</h4>
+                    <p>Keyboard controls and button interactions</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💥 Collision Detection</h4>
+                    <p>Using <code>crashWith()</code> for game logic</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📊 Data Persistence</h4>
+                    <p>Saving highscores with localStorage</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔄 Game Loop</h4>
+                    <p>Using the <code>update()</code> function effectively</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📱 Mobile Support</h4>
+                    <p>Touch-friendly button controls</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎯 Progressive Difficulty</h4>
+                    <p>Increasing challenge over time</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="assets-download">
+            <h3>🖼️ Required Assets</h3>
+            <p>Create an <code>img/</code> folder with these images:</p>
+            <ul>
+                <li><strong>dino.png</strong> - Player character (37.5 × 75 pixels)</li>
+                <li><strong>obt.png</strong> - Cactus obstacle (18.75 × 37.5 pixels)</li>
+            </ul>
+            <p><em>Tip: You can use colored rectangles while testing: <code>"green"</code> instead of <code>"img/dino.png"</code></em></p>
+        </div>
+
+        <div class="quick-start">
+            <h3>🚀 Quick Start</h3>
+            <ol>
+                <li>Download TCJSgame V2 from the <a href="download.html">Download page</a></li>
+                <li>Create the three files: <code>index.html</code>, <code>dino.js</code>, and <code>img/</code> folder</li>
+                <li>Copy the code above into your files</li>
+                <li>Open <code>index.html</code> in your browser</li>
+                <li>Press Spacebar or click the Jump button to play!</li>
+            </ol>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="https://terracodes004.github.io/tcjsgame-dino/" target="_blank" class="btn">Play Live Demo</a>
+        <a href="download.html" class="btn btn-secondary">Download TCJSgame</a>
+        <a href="https://terracodes004.github.io/tcjsgame_editor/" target="_blank" class="btn btn-secondary">Try in Playground</a>
+    </div>
+</section>
+
+<style>
+.full-tutorial-section {
+    margin: 2rem 0;
+}
+
+.live-demo {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.live-demo h3 {
+    margin-top: 0;
+    color: white;
+}
+
+.tutorial-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tutorial-step {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.tutorial-step h3 {
+    color: #007BFF;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #007BFF;
+}
+
+.feature-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.feature-item p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.assets-download {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff3cd;
+    border-radius: 8px;
+    border: 1px solid #ffeaa7;
+}
+
+.assets-download h3 {
+    color: #856404;
+    margin-top: 0;
+}
+
+.quick-start {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #d4edda;
+    border-radius: 8px;
+    border: 1px solid #c3e6cb;
+}
+
+.quick-start h3 {
+    color: #155724;
+    margin-top: 0;
+}
+
+.quick-start ol {
+    text-align: left;
+}
+
+.quick-start li {
+    margin-bottom: 0.5rem;
+}
+
+.tutorial-features {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #d1ecf1;
+    border-radius: 8px;
+    border: 1px solid #bee5eb;
+}
+
+.tutorial-features h3 {
+    color: #0c5460;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tutorial-step {
+        padding: 1rem;
+    }
+    
+    .code-block {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+}
+</style>
         </div>
     </main>
     
@@ -575,3 +1018,4 @@ function jump() {<br>
     </script>
 </body>
 </html>
+
