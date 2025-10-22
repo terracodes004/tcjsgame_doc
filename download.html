@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCJSgame</title>
+    <title>TCJSGame - Download Extensions</title>
     <link rel="icon" href="/img/icon.jpg">
     <!-- Google tag (gtag.js) -->
     <meta name="google-site-verification" content="google-site-verification=AXZjHiFuW72eAuDRS4h_0sQuYAXcAk6IU9plJeTIVww">
@@ -11,173 +11,394 @@
     <meta name="robots" content="game, game engine, javascript, framework, jgame, tcjsgame">
     <meta name="googlebot" content="game, game engine, javascript, framework, jgame, tcjsgame">
     <meta tag="author" content="Owolabi kehinde">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QT8QNR621"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1QT8QNR621');
-</script>
-    <meta name="description" content="TCJSgame documentation avalible here">
-    <link rel="stylesheet" href="style.css">
-    <script  src="func.js"></script>
+    <meta name="description" content="Download TCJSGame engine and extensions">
     <style>
-        .con{
-            display: grid;
-            width: 100%;
-            grid-template-columns: 2fr 1fr;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .small{
-            color: rgba(173, 172, 172, 0.23);
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
         }
-        h1, h2, h3, h4, h5, h6{
-            text-transform: uppercase;
+        
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
             text-align: center;
         }
-        article{
-            background-color: white;
-            width: 100%;
-            
-            h3, h2{
-                text-decoration: underline;
-                text-transform: uppercase;
-            }
-            
-            
+        
+        .intro h2 {
+            color: #1a2a6c;
+            margin-bottom: 1rem;
         }
-        img{
-            width: 100%;
+        
+        .extensions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
-        details{
+        
+        .extension-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .extension-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .version {
             display: inline-block;
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        
+        .description {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .download-btn {
+            display: block;
             width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
         }
-        details :hover{
-            cursor:cell;
+        
+        .download-btn:hover {
+            background: linear-gradient(to right, #2338a1, #d42c2c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        /*
-         body{
-            background:linear-gradient(to right, #2783e655, #0057b35a);
-         }*/
-        @media screen and (max-width : 780px) {
-            .con{
-                display: block;
-                
+        
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-size {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .download-icon {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .extensions-grid {
+                grid-template-columns: 1fr;
             }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0 1rem;
         }
     </style>
 </head>
-<body style="margin: 0px;">
+<body>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="doc.html">Documentation</a></li>
             <li><a href="download.html">Download</a></li>
-
-
         </ul>
     </nav>
-    <main>
-    <section>
-        <fieldset>
-            <legend>ABOUT TCJSgame</legend>
-            <div class="con">
-        <article>
-            <h2>TCJSGAME</h2>
-            <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
-            <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
-                <details>
-                    <summary>Download</summary>
-                    
-            <p>
-                <h3>Latest version</h3>
-                <a href="mat/tcjsgame-v2.js" style="float: left;" download>tcjsgame -v2</a> <div  style="float: right; font-size: large;" class="f">⏬</div>
-            </p></details>
-        </article>
-        <img src="img/icon.jpg" class="secimg">
-    </div>
-    </fieldset>
-        <fieldset>
-            <legend>ABOUT TCJSgame Performance Extension</legend>
-            <div class="con">
-        <article>
-            <h2>TCJSGAME</h2>
-            <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
-            <p><strong>Description:</strong> tcjsgame-perf.js is a TCJSgame extension thats works on v1, v2 and v3 and increase performance of your game.</p>
-                <details>
-                    <summary>Download</summary>
-                    
-            <p>
-                <h3>Latest version</h3>
-                <a href="mat/tcjsgame-perf.js" style="float: left;" download>tcjsgame-perf.js</a> <div  style="float: right; font-size: large;" class="f">⏬</div>
-            </p></details>
-        </article>
-        <img src="img/icon.jpg" class="secimg">
-    </div>
-    </fieldset>
-        <fieldset>
-            <legend>ABOUT TCJSgame Speed Extension</legend>
-            <div class="con">
-        <article>
-            <h2>TCJSGAME</h2>
-            <p><strong>Version:</strong> 2.0 | <strong>Date:</strong> March 12, 2025</p>
-            <p><strong>Description:</strong> speed.js is a TCJSgame extension thats works on v1, v2 and v3 and increase performance of your game.</p>
-                <details>
-                    <summary>Download</summary>
-                    
-            <p>
-                <h3>Latest version</h3>
-                <a href="mat/speed.js" style="float: left;" download>tcjsgame-perf.js</a> <div  style="float: right; font-size: large;" class="f">⏬</div>
-            </p></details>
-        </article>
-        <img src="img/icon.jpg" class="secimg">
-    </div>
-    </fieldset>
-        <fieldset>
-            <legend>ABOUT TCJSgame</legend>
-            <div class="con">
-        <article>
-            <h2>TCJSGAME</h2>
-            <p><strong>Version:</strong> 3.0 | <strong>Date:</strong> March 12, 2025</p>
-            <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
-                <details>
-                    <summary>Download</summary>
-                    
-            <p>
-                <h3>Latest version</h3>
-                <a href="mat/tcjsgame-v3.js" style="float: left;" download>tcjsgame-v3.js</a> <div  style="float: right; font-size: large;" class="f">⏬</div>
-            </p></details>
-        </article>
-        <img src="img/icon.jpg" class="secimg">
-    </div>
-    </fieldset>
-    <fieldset>
-        <legend>ABOUT TCJSgame</legend>
-        <div class="con">
-    <article>
-        <h2>TCJSGAME</h2>
-        <p><strong>Version:</strong> 1.0 | <strong>Date:</strong> March 12, 2025</p>
-        <p><strong>Description:</strong> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
-            <details>
-                <summary>Download</summary>
-                
-        <p>
-            <h3>Latest version</h3>
-            <a href="mat/tcjsgame-v1.zip" style="float: left;" download>tcjsgame -v1</a> <div  style="float: right; font-size: large;" class="f">⏬</div>
-        </p></details>
-    </article>
-    <img src="img/icon.jpg" class="secimg">
-</div>
-</fieldset>
-</section>
     
-</main>
+    <header>
+        <h1>TCJSGame Extensions</h1>
+        <p>Download the latest versions of TCJSGame engine and its powerful extensions</p>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <h2>Enhance Your Game Development</h2>
+            <p>TCJSGame is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. These extensions add powerful functionality to the core engine.</p>
+        </section>
+        
+        <div class="extensions-grid">
+            <!-- TCJSGame Engine v3 -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>TCJSGame Engine v3</h3>
+                    <p>Core Game Engine</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 3.0 | March 12, 2025</span>
+                    <p class="description">The core TCJSGame engine for creating 2D games with a canvas-based rendering system. Includes classes for managing display, components, cameras, sounds, and sprites.</p>
+                    <a href="mat/tcjsgame-v3.js" class="download-btn" download>Download Engine</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~45 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- Performance Extension -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>Performance Extension</h3>
+                    <p>Optimized Game Loop</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 2.0 | March 12, 2025</span>
+                    <p class="description">Replaces the default game loop with requestAnimationFrame, adds delta time, viewport culling, and component caching for dramatically improved performance.</p>
+                    <a href="mat/tcjsgame-perf.js" class="download-btn" download>Download Extension</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~12 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- Speed Extension -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>Speed Extension</h3>
+                    <p>Enhanced Performance</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 2.0 | March 12, 2025</span>
+                    <p class="description">A TCJSGame extension that works on v1, v2 and v3 to increase performance of your game with optimized rendering and calculation methods.</p>
+                    <a href="mat/speed.js" class="download-btn" download>Download Extension</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~8 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- Patched Performance Extension -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>Patched Performance Extension</h3>
+                    <p>Advanced Optimization</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 1.0 | March 12, 2025</span>
+                    <p class="description">Advanced performance extension that replaces the game loop for superior performance, adding delta time, viewport culling, and FPS monitoring.</p>
+                    <a href="https://tcjsgame.vercel.app/mat/patched-performance-extension.js" class="download-btn" download>Download Extension</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~15 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- Text Extension -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>Text Extension (Tctxt)</h3>
+                    <p>Enhanced Text Rendering</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 1.0 | March 12, 2025</span>
+                    <p class="description">Provides enhanced text rendering with backgrounds, alignment, stroke effects, and dynamic updates for UIs, HUDs, and dialogue systems.</p>
+                    <a href="https://tcjsgame.vercel.app/mat/tcfont.js" class="download-btn" download>Download Extension</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~10 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- Sound Extension -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>Sound Extension</h3>
+                    <p>Audio Management</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 1.0 | March 12, 2025</span>
+                    <p class="description">Adds comprehensive sound and music capabilities to your game. Play, loop, and stop audio files with simple API calls.</p>
+                    <a href="mat/tcjsgame-sound.js" class="download-btn" download>Download Extension</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~7 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- Save Extension -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>Save Extension</h3>
+                    <p>Game State Persistence</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 1.0 | March 12, 2025</span>
+                    <p class="description">Enables saving and loading game progress using browser's local storage. Perfect for maintaining player progression between sessions.</p>
+                    <a href="mat/tcjsgame-save.js" class="download-btn" download>Download Extension</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~6 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- TCJSGame Engine v2 -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>TCJSGame Engine v2</h3>
+                    <p>Previous Version</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 2.0 | March 12, 2025</span>
+                    <p class="description">Previous version of the TCJSGame engine. Includes classes for managing display, components, cameras, sounds, and sprites.</p>
+                    <a href="mat/tcjsgame-v2.js" class="download-btn" download>Download Engine</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~42 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+            
+            <!-- TCJSGame Engine v1 -->
+            <div class="extension-card">
+                <div class="card-header">
+                    <h3>TCJSGame Engine v1</h3>
+                    <p>Legacy Version</p>
+                </div>
+                <div class="card-body">
+                    <span class="version">Version 1.0 | March 12, 2025</span>
+                    <p class="description">The original TCJSGame engine. Includes classes for managing display, components, sounds, and sprites.</p>
+                    <a href="mat/tcjsgame-v1.zip" class="download-btn" download>Download Engine</a>
+                </div>
+                <div class="card-footer">
+                    <span class="file-size">~38 KB</span>
+                    <span class="download-icon">⏬</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>TCJSGame &copy; 2025 | Created by Owolabi Kehinde</p>
+    </footer>
 </body>
 </html>
-
-
-
-
-
