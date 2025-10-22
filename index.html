@@ -969,6 +969,611 @@ function gameOver() {
     }
 }
 </style>
+            <!-- Add this section to your homepage -->
+<section class="card extensions-section" id="extensions">
+    <div class="card-header">
+        <h2 class="card-title">TCJSgame Extensions</h2>
+    </div>
+    <div class="card-body">
+        <p class="section-intro">Extend TCJSgame's capabilities with powerful official extensions. These add-ons provide specialized functionality for performance, text rendering, and advanced game features.</p>
+
+        <!-- Performance Extensions -->
+        <div class="extension-category">
+            <h3>🚀 Performance Extensions</h3>
+            <p class="category-description">Optimize your games for better frame rates and smoother gameplay.</p>
+            
+            <div class="extensions-grid">
+                <!-- Patched Performance Extension -->
+                <div class="extension-card">
+                    <div class="extension-header">
+                        <h4>Patched Performance Extension</h4>
+                        <span class="extension-badge performance">Performance</span>
+                    </div>
+                    <div class="extension-body">
+                        <p class="extension-description">Complete performance overhaul with advanced optimization features.</p>
+                        <ul class="extension-features">
+                            <li>Replaces game loop with requestAnimationFrame</li>
+                            <li>Viewport culling for better rendering</li>
+                            <li>Component caching system</li>
+                            <li>Delta time integration</li>
+                            <li>Real-time FPS monitoring</li>
+                        </ul>
+                        <div class="extension-code">
+                            <h5>Installation:</h5>
+                            <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="patched-performance-extension.js"&gt;&lt;/script&gt;
+                            </div>
+                            <h5>Usage:</h5>
+                            <div class="code-block">
+const display = new Display();
+display.start(800, 600, document.body, {
+    useDelta: true,        // Enable delta time
+    enableCulling: true,   // Render only visible objects
+    enableCaching: true    // Cache static components
+});
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extension-footer">
+                        <a href="#" class="btn btn-small">Download</a>
+                        <a href="#" class="btn btn-small btn-secondary">Documentation</a>
+                    </div>
+                </div>
+
+                <!-- Speed.js -->
+                <div class="extension-card">
+                    <div class="extension-header">
+                        <h4>speed.js</h4>
+                        <span class="extension-badge performance">Performance</span>
+                    </div>
+                    <div class="extension-body">
+                        <p class="extension-description">Lightweight game loop optimization for consistent 60 FPS.</p>
+                        <ul class="extension-features">
+                            <li>Optimized game loop timing</li>
+                            <li>Frame rate stabilization</li>
+                            <li>Minimal performance overhead</li>
+                            <li>Easy integration</li>
+                        </ul>
+                        <div class="extension-code">
+                            <h5>Installation:</h5>
+                            <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="speed.js"&gt;&lt;/script&gt;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extension-footer">
+                        <a href="#" class="btn btn-small">Download</a>
+                        <a href="#" class="btn btn-small btn-secondary">Examples</a>
+                    </div>
+                </div>
+
+                <!-- tcjsgame-perf.js -->
+                <div class="extension-card">
+                    <div class="extension-header">
+                        <h4>tcjsgame-perf.js</h4>
+                        <span class="extension-badge performance">Performance</span>
+                    </div>
+                    <div class="extension-body">
+                        <p class="extension-description">General performance optimization with essential features.</p>
+                        <ul class="extension-features">
+                            <li>requestAnimationFrame integration</li>
+                            <li>Delta time support</li>
+                            <li>Basic caching system</li>
+                            <li>Viewport culling</li>
+                        </ul>
+                        <div class="extension-code">
+                            <h5>Installation:</h5>
+                            <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="tcjsgame-perf.js"&gt;&lt;/script&gt;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extension-footer">
+                        <a href="#" class="btn btn-small">Download</a>
+                        <a href="#" class="btn btn-small btn-secondary">View Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text & UI Extensions -->
+        <div class="extension-category">
+            <h3>📝 Text & UI Extensions</h3>
+            <p class="category-description">Enhanced text rendering and user interface components.</p>
+            
+            <div class="extensions-grid">
+                <!-- Tctxt (tcfont.js) -->
+                <div class="extension-card">
+                    <div class="extension-header">
+                        <h4>Tctxt Extension</h4>
+                        <span class="extension-badge text">Text</span>
+                    </div>
+                    <div class="extension-body">
+                        <p class="extension-description">Advanced text rendering with background, stroke, and alignment options.</p>
+                        <ul class="extension-features">
+                            <li>Custom font styling</li>
+                            <li>Background padding</li>
+                            <li>Text stroke/outline effects</li>
+                            <li>Advanced alignment options</li>
+                            <li>Dynamic text updates</li>
+                        </ul>
+                        <div class="extension-code">
+                            <h5>Installation:</h5>
+                            <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="tcfont.js"&gt;&lt;/script&gt;
+                            </div>
+                            <h5>Usage:</h5>
+                            <div class="code-block">
+// Create styled text with background
+const scoreText = new Tctxt("20px", "Arial", "white", 50, 50, "left", 
+    false, "alphabetic", "rgba(0,0,0,0.7)", 15, 10);
+scoreText.text = "Score: 0";
+display.add(scoreText);
+
+// Update dynamically
+function updateScore(points) {
+    scoreText.text = `Score: ${points}`;
+}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extension-footer">
+                        <a href="#" class="btn btn-small">Download</a>
+                        <a href="#" class="btn btn-small btn-secondary">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Extensions -->
+        <div class="extension-category">
+            <h3>🎵 Audio Extensions</h3>
+            <p class="category-description">Enhanced audio capabilities and sound management.</p>
+            
+            <div class="extensions-grid">
+                <!-- Advanced Audio -->
+                <div class="extension-card">
+                    <div class="extension-header">
+                        <h4>Advanced Audio</h4>
+                        <span class="extension-badge audio">Audio</span>
+                    </div>
+                    <div class="extension-body">
+                        <p class="extension-description">Extended audio features with spatial audio and effects.</p>
+                        <ul class="extension-features">
+                            <li>Audio spatialization</li>
+                            <li>Volume fading</li>
+                            <li>Audio pooling</li>
+                            <li>Cross-browser compatibility</li>
+                        </ul>
+                        <div class="extension-code">
+                            <h5>Installation:</h5>
+                            <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="advanced-audio.js"&gt;&lt;/script&gt;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extension-footer">
+                        <a href="#" class="btn btn-small">Download</a>
+                        <a href="#" class="btn btn-small btn-secondary">Examples</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Physics Extensions -->
+        <div class="extension-category">
+            <h3>⚡ Physics Extensions</h3>
+            <p class="category-description">Advanced physics and collision systems.</p>
+            
+            <div class="extensions-grid">
+                <!-- Enhanced Physics -->
+                <div class="extension-card">
+                    <div class="extension-header">
+                        <h4>Enhanced Physics</h4>
+                        <span class="extension-badge physics">Physics</span>
+                    </div>
+                    <div class="extension-body">
+                        <p class="extension-description">Advanced physics engine with realistic movement and collisions.</p>
+                        <ul class="extension-features">
+                            <li>Advanced collision detection</li>
+                            <li>Realistic gravity simulation</li>
+                            <li>Velocity and acceleration controls</li>
+                            <li>Object mass and friction</li>
+                        </ul>
+                        <div class="extension-code">
+                            <h5>Installation:</h5>
+                            <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="enhanced-physics.js"&gt;&lt;/script&gt;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extension-footer">
+                        <a href="#" class="btn btn-small">Download</a>
+                        <a href="#" class="btn btn-small btn-secondary">Demos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Installation Guide -->
+        <div class="installation-guide">
+            <h3>📥 Installation Guide</h3>
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <h4>1. Download Extension</h4>
+                    <p>Get the extension file from the official repository or download link.</p>
+                </div>
+                <div class="guide-step">
+                    <h4>2. Include in HTML</h4>
+                    <p>Add the extension script after the main TCJSgame engine:</p>
+                    <div class="code-block">
+&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
+&lt;script src="extension-name.js"&gt;&lt;/script&gt;
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <h4>3. Initialize in Code</h4>
+                    <p>Use the extension features in your game code as shown in the examples.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extension Comparison -->
+        <div class="extension-comparison">
+            <h3>📊 Extension Comparison</h3>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Extension</th>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Browser Support</th>
+                            <th>Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Patched Performance</td>
+                            <td>Performance</td>
+                            <td>~8KB</td>
+                            <td>All modern browsers</td>
+                            <td>Beginner</td>
+                        </tr>
+                        <tr>
+                            <td>speed.js</td>
+                            <td>Performance</td>
+                            <td>~3KB</td>
+                            <td>All modern browsers</td>
+                            <td>Beginner</td>
+                        </tr>
+                        <tr>
+                            <td>Tctxt</td>
+                            <td>Text Rendering</td>
+                            <td>~5KB</td>
+                            <td>All modern browsers</td>
+                            <td>Beginner</td>
+                        </tr>
+                        <tr>
+                            <td>Enhanced Physics</td>
+                            <td>Physics</td>
+                            <td>~12KB</td>
+                            <td>All modern browsers</td>
+                            <td>Intermediate</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Community Extensions -->
+        <div class="community-extensions">
+            <h3>👥 Community Extensions</h3>
+            <p>Looking for more extensions? Check out our community-driven extensions:</p>
+            <div class="community-links">
+                <a href="#" class="btn btn-secondary">GitHub Repository</a>
+                <a href="#" class="btn btn-secondary">Community Forums</a>
+                <a href="#" class="btn btn-secondary">Submit Your Extension</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.extensions-section {
+    margin: 2rem 0;
+}
+
+.section-intro {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.extension-category {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.extension-category h3 {
+    color: #333;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #007BFF;
+}
+
+.category-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.extensions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.extension-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.extension-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.extension-header {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.extension-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.extension-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.extension-badge.performance {
+    background: #ff6b6b;
+    color: white;
+}
+
+.extension-badge.text {
+    background: #4ecdc4;
+    color: white;
+}
+
+.extension-badge.audio {
+    background: #ffd166;
+    color: #333;
+}
+
+.extension-badge.physics {
+    background: #06d6a0;
+    color: white;
+}
+
+.extension-body {
+    padding: 1.5rem;
+}
+
+.extension-description {
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.extension-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.extension-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.extension-features li:before {
+    content: "✓";
+    color: #007BFF;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.extension-features li:last-child {
+    border-bottom: none;
+}
+
+.extension-code {
+    margin-top: 1.5rem;
+}
+
+.extension-code h5 {
+    margin: 1rem 0 0.5rem 0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.extension-footer {
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
+
+/* Installation Guide */
+.installation-guide {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: #e7f3ff;
+    border-radius: 10px;
+    border-left: 4px solid #007BFF;
+}
+
+.installation-guide h3 {
+    color: #007BFF;
+    margin-top: 0;
+}
+
+.guide-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.guide-step {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.guide-step h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+/* Comparison Table */
+.extension-comparison {
+    margin: 3rem 0;
+}
+
+.extension-comparison h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.comparison-table {
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.comparison-table th {
+    background: #007BFF;
+    color: white;
+    font-weight: 600;
+}
+
+.comparison-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Community Extensions */
+.community-extensions {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.community-extensions h3 {
+    color: #333;
+    margin-top: 0;
+}
+
+.community-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .extensions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .extension-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .guide-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .community-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .community-links .btn {
+        width: 200px;
+    }
+    
+    .comparison-table {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .extension-category {
+        padding: 1rem;
+    }
+    
+    .extension-body {
+        padding: 1rem;
+    }
+    
+    .installation-guide {
+        padding: 1rem;
+    }
+}
+</style>
         </div>
     </main>
     
@@ -1018,4 +1623,5 @@ function gameOver() {
     </script>
 </body>
 </html>
+
 
