@@ -3,453 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCJSgame</title>
+    <title>TCJSgame - Lightweight JavaScript Game Engine</title>
     <link rel="icon" href="/img/icon.jpg">
-    <meta name="description" content="TCJSgame documentation avalible here">.
+    <meta name="description" content="TCJSgame - A beginner-friendly JavaScript game engine for creating 2D games in the browser">
     <meta name="google-site-verification" content="google-site-verification=AXZjHiFuW72eAuDRS4h_0sQuYAXcAk6IU9plJeTIVww">
+    <meta name="keywords" content="game engine, javascript, 2d games, canvas, web development, tcjsgame, game framework">
+    <meta name="author" content="Owolabi Kehinde - Terra Codes">
+    
     <!-- Google tag (gtag.js) -->
-    <meta name="robots" content="game, game engine, javascript, framework, jgame, tcjsgame">
-    <meta name="googlebot" content="game, game engine, javascript, framework, jgame, tcjsgame">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QT8QNR621"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1QT8QNR621');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QT8QNR621"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1QT8QNR621');
+    </script>
+    
     <link rel="stylesheet" href="style.css">
-    <script  src="func.js"></script>
     <style>
-        section{
-            margin: 1cm;
+        :root {
+            --primary-blue: #007BFF;
+            --dark-blue: #0056b3;
+            --light-blue: #2783e655;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f4f4f4;
+            --white: #fff;
         }
-        .con{
-            display: grid;
-            width: 100%;
-            grid-template-columns: 2fr 1fr;
+        
+        * {
+            box-sizing: border-box;
         }
-        .small{
-            color: rgba(173, 172, 172, 0.23);
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e9ecef 100%);
+            line-height: 1.6;
+            color: var(--text-dark);
         }
-        h1, h2, h3, h4, h5, h6{
-            text-transform: uppercase;
+        
+        /* Header Styles */
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .main-title {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            flex: 1;
             text-align: center;
         }
-        article{
-            background-color: white;
-            width: 100%;
-            
-            h3, h2{
-                text-decoration: underline;
-                text-transform: uppercase;
+        
+        .nav-link {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(0, 123, 255, 0.1);
+            border-bottom: 3px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 1rem 1.5rem;
+        }
+        
+        .card-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Feature Highlights */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: var(--text-dark);
+        }
+        
+        /* Code Examples */
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+        
+        /* Footer */
+        .main-footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
             }
             
-            
-        }
-        img{
-            width: 100%;
-        }
-        details{
-            display: inline-block;
-            width: 100%;
-        }
-        details :hover{
-            cursor:cell;
-        }
-        /*
-         body{
-            background:linear-gradient(to right, #2783e655, #0057b35a);
-         }*/
-        @media screen and (max-width : 780px) {
-            .con{
-                display: block;
-                
+            .nav-list {
+                flex-direction: column;
             }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+        }
+        
+        /* Animation for header background */
+        @keyframes headerBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .main-header {
+            animation: headerBackground 15s ease infinite;
+            background-size: 200% 200%;
         }
     </style>
 </head>
-<body style="margin: 0px;">
-    <header style="background-color: white;background-image: url('img/icon.jpg'); background-repeat: no-repeat; transition: background-image 3s;">
-        <img src="img/icon.jpg" class="img" alt="Icon for TCJSgame">
-        <h1>TCJSGAME 
-        </h1><i><small>Made by</small></i>
-        <img src="img/logo.png" width="100%" height="300">
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="img/icon.jpg" alt="TCJSgame Logo" class="logo-img">
+                <div>
+                    <h1 class="main-title">TCJSgame</h1>
+                    <p class="tagline">Lightweight JavaScript Game Engine for 2D Browser Games</p>
+                </div>
+            </div>
+            <p>Create amazing 2D games with minimal code. Perfect for beginners and educators.</p>
+            <div class="cta-buttons">
+                <a href="download.html" class="btn">Get Started</a>
+                <a href="doc.html" class="btn btn-secondary">Documentation</a>
+                <a href="https://terracodes004.github.io/tcjsgame_editor/" target="_blank" class="btn btn-secondary">Playground</a>
+            </div>
+        </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="doc.html">Documentation</a></li>
-            <li><a href="download.html">Download</a></li>
-
-
+    
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="doc.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="download.html" class="nav-link">Download</a></li>
+            <li class="nav-item"><a href="https://github.com/terracodes004/tcjsgame" target="_blank" class="nav-link">GitHub</a></li>
         </ul>
     </nav>
-    <main>
-        <section>
-            <fieldset>
-  <legend>ABOUT TCJSgame</legend>
-  <div class="con">
-    <article>
-      <h2>TCJSgame</h2>
-      <p><b>Version:</b> 3.0 | <b>Date:</b> September 3, 2025</p>
-      <p>
-        <b>Description:</b> <code>tcjsgame-v3.js</code> is the latest version of
-        the lightweight JavaScript game engine for creating 2D games directly in
-        the browser. It uses a <b>canvas-based rendering system</b> and provides
-        essential classes for <b>Display, Components, Camera, Sound, Sprites,
-        and TileMaps</b>. It also includes utility objects
-        (<code>move</code> and <code>state</code>) to handle entity movement,
-        physics, collisions, and state checks with minimal code.
-          <a href="/v3-doc/">View documentation here</a>
-      </p>
-
-      <details>
-        <summary>Read more...</summary>
-        <p>
-          <h3>History</h3>
-          TCJSgame was created by <b>Owolabi Kehinde</b>. Initially, he wanted
-          to learn how to create games in JavaScript using W3Schools tutorials,
-          but found it too difficult to structure everything from scratch.
-          Inspired by this challenge, he began working on his own small engine
-          in 2023, which he called <b>Jgame</b>. By 2024, Jgame evolved into
-          <b>TCgame</b>. In 2025, the project was rebranded to
-          <b>TCJSgame</b>, emphasizing its focus on JavaScript-powered 2D game
-          development. Version 3 (released in September 2025) introduces
-          <b>improved movement utilities, angle-based motion, TileMap
-          rendering, a camera system, and a more robust Component class</b>,
-          making it both beginner-friendly and capable of handling more
-          advanced projects.
-        </p>
-      </details>
-    </article>
-    <img src="img/icon.jpg" class="secimg" alt="TCJSgame Logo">
-  </div>
-</fieldset>
-<fieldset> <legend>TCJSgame Playground</legend>
-      <p>
-    <h3>Try TCJSgame Online</h3>
-    Experiment with TCJSgame directly in your browser using the official playground: <a href="https://terracodes004.github.io/tcjsgame_editor/" target="_blank">TCJSgame Playground</a>. Test code, create prototypes, and see results in real-time!
-  </p>
-
-  <details>
-    <summary>Read more...</summary>
-    <p>
-      <h3>History</h3>
-      TCJSgame was created by <b>Owolabi Kehinde</b>. Initially, he wanted to learn how to create games in JavaScript using W3Schools tutorials, but found it too difficult to structure everything from scratch. Inspired by this challenge, he began working on his own small engine in 2023, which he called <b>Jgame</b>. By 2024, Jgame evolved into <b>TCgame</b>. In 2025, the project was rebranded to <b>TCJSgame</b>, emphasizing its focus on JavaScript-powered 2D game development.
-    </p>
-  </details>
-</article>
-<img src="img/icon.jpg" class="secimg" alt="TCJSgame Logo">
-</fieldset>
-            <fieldset>
-                <legend>TERRA CODES</legend>
-                <div class="con">
-            <article>
-                <h2>Terra Codes</h2>
-
-                <h3>Introduction</h3>
-                Terra Codes is a software company for creating applications for both developers, graphic designers and other comupter. <br>
-                <details> <summary>
-
-                </summary>
-                    <h2>History</h2>
-                    <p>
-                        Terra codes is just a company created by a Nigerian teenager at the age of 16 to gather developers in his school.
-                    </p>
-                    
-            </details>
-
-            </article>
-            <img src="img/logo.png" class="secimg">
-        </div>
-        </fieldset>
-        <fieldset>
-            <legend>ABOUT TCJSgame</legend>
-            <div class="con">
-        <article>
-            <h2>TCJSGAME</h2>
-            <p><b>Version:</b> 2.0 | <b>Date:</b> March 12, 2025</p>
-            <p><b>Description:</b> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
-                <details>
-                    <summary></summary>
-                    
-            <p>
-                <h3>History</h3>
-                Owolabi kehinde (the arthur) was and wanted to learn how to create a game using Javascript in W3schools but it was to hard for him so he decided to created Jgame in 2023 and finished 2024. He later renamed it to TCgame in 2025 and then changed it to TCJSgame in the same year.
-            </p></details>
-        </article>
-        <img src="img/icon.jpg" class="secimg">
-    </div>
-    </fieldset>
-         </fieldset>
-        <fieldset>
-  <legend>Dino Game — Step by Step Tutorial (TCJSgame V2)</legend>
-  <div class="con">
-    <article>
-      <h2>Build the Dino Game using TCJSgame</h2>
-
-      <ol>
-        <li>
-          <b>Files & includes</b><br>
-          Create (or confirm) these files in your project:
-          <ul>
-            <li><code>tcjsgame-v2.js</code> — the engine</li>
-            <li><code>dino.js</code> — your game logic</li>
-            <li><code>dino.html</code> — the page that loads them</li>
-          </ul>
-            
-          In your HTML include the engine first, then your game file:
-          <pre><code>&lt;script src="tcjsgame-v2.js"&gt;&lt;/script&gt;
-&lt;script src="dino.js"&gt;&lt;/script&gt;</code></pre>
-        </li>
-<details>
-    <summary>See more...</summary>
-        <li>
-          <b>Start the display (canvas)</b><br>
-          In <code>dino.js</code> create a <code>Display</code> and start it near the top of the file:
-          <pre><code>// in dino.js
-const display = new Display();
-display.start(480, 270); // width, height (optional)</code></pre>
-          The engine creates and inserts the canvas and begins calling <code>update()</code> each frame.
-        </li>
-
-        <li>
-          <b>Score & highscore</b><br>
-          Create variables and add text components to show score and highscore:
-          <pre><code>let s = 0;
-let hs = Number(localStorage.getItem('hs')) || 0;
-
-const score = new Component("25px", "Cambria Math", "red", 10, 40, "text");
-const hst = new Component("20px", "Consolas", "black", 240, 40, "text");
-display.add(score);
-display.add(hst);</code></pre>
-          Use <code>localStorage</code> so the highscore persists across reloads.
-        </li>
-
-        <li>
-          <b>Create the Dino (player)</b><br>
-          Make Dino as an image component, enable physics & gravity:
-          <pre><code>const dino = new Component(37.5, 75, "img/dino.png", 0, display.canvas.height - 100, "image");
-dino.physics = true;
-dino.gravity = 1; // normal downward gravity
-display.add(dino);</code></pre>
-          Notes: gravity is a <em>number</em> (positive pulls down). We'll set a negative jump value when jumping.
-        </li>
-
-        <li>
-          <b>Create the obstacle</b><br>
-          Place it at the right edge and give it a negative X speed so it moves left:
-          <pre><code>const obt = new Component(75/4, 75/2, "img/obt.png",
-  display.canvas.width, display.canvas.height - 75/2, "image");
-obt.speedX = -1; // leftward movement
-display.add(obt);</code></pre>
-          You can later increase <code>obt.speedX</code> over time to make the game harder.
-        </li>
-
-        <li>
-          <b>Increment score over time</b><br>
-          Add a timer to reward survival:
-          <pre><code>setInterval(() =&gt; {
-  s += 1;
-}, 1000); // +1 every second</code></pre>
-        </li>
-
-        <li>
-          <b>Jump controls (keyboard + button)</b><br>
-          Implement a reusable jump function and wire the spacebar and any on-screen button to it:
-          <pre><code>function jump() {
-  // only jump if on the ground
-  if (dino.y >= display.canvas.height - dino.height) {
-    dino.gravity = -6;          // b upward acceleration (tweak value)
-    setTimeout(() =&gt; { dino.gravity = 1; }, 200); // restore gravity quickly
-  }
-}
-
-window.addEventListener('keydown', (e) =&gt; {
-  if (e.key === ' ') jump(); // spacebar
-});</code></pre>
-          For a mobile button, use: <code>&lt;button onclick="jump()"&gt;Jump&lt;/button&gt;</code>.
-        </li>
-
-        <li>
-          <b>The <code>update()</code> game loop</b><br>
-          The engine calls <code>update()</code> every frame. Put logic to update UI, handle ground, recycle obstacles, detect collisions, and save highscores here:
-          <pre><code>function update() {
-  // update text
-  score.text = `Score : ${s}`;
-  hst.text = `Highscore : ${hs}`;
-
-  // keep dino on ground
-  if (dino.y &gt;= display.canvas.height - dino.height) {
-    dino.y = display.canvas.height - dino.height;
-    dino.gravitySpeed = 0;
-  }
-
-  // recycle obstacle when offscreen
-  if (obt.x &lt;= -obt.width) {
-    obt.x = display.canvas.width;
-  }
-
-  // collision detection
-  if (dino.crashWith(obt)) {
-    alert("You lose!");
-    s = 0;
-    // move obstacle away or reset it
-    obt.x = display.canvas.width;
-  }
-
-  // highscore
-  if (s &gt; hs) {
-    hs = s;
-    localStorage.setItem('hs', hs);
-  }
-}</code></pre>
-          Notes: keep <code>update()</code> fast — it runs every frame.
-        </li>
-
-        <li>
-          <b>Polish & difficulty</b><br>
-          A few ideas to improve gameplay:
-          <ul>
-            <li>Increase <code>obt.speedX</code> or reduce the interval between spawns as <code>s</code> grows.</li>
-            <li>Add multiple obstacles, random heights, or gaps.</li>
-            <li>Add images and a sprite sheet for animated Dino frames (use the engine's <code>Sprite</code> class).</li>
-            <li>Add sounds using the <code>Sound</code> class.</li>
-          </ul>
-        </li>
-
-        <li>
-          <b>Common bugs & tips</b>
-          <ul>
-            <li><b>Gravity type:</b> Use numbers for gravity (e.g. <code>1</code>), not booleans — the engine does <code>gravitySpeed += gravity</code>.</li>
-            <li><b>Jump tuning:</b> If the Dino feels floaty, increase negative jump (e.g. <code>-8</code>) and shorten the time you keep negative gravity.</li>
-            <li><b>Responsive canvas:</b> change canvas size in <code>display.start()</code> and adjust game coordinates when size changes.</li>
-            <li><b>Debugging:</b> add <code>console.log()</code> for positions and collision checks while tuning.</li>
-          </ul>
-        </li>
-
-      </ol>
     
-      </details>
-      <b>Quick copy-paste summary (core dino.js)</b>
-      <details><summary>Quick copy-paste summary (core dino.js)</summary>
-      <pre><code>// Minimal core (put into dino.js after including the engine)
-const display = new Display();
-display.start(480,270);
-
-let s = 0;
-let hs = Number(localStorage.getItem('hs')) || 0;
-
-const score = new Component("25px","Cambria Math","red",10,40,"text");
-const hst = new Component("20px","Consolas","black",240,40,"text");
-display.add(score); display.add(hst);
-
-const dino = new Component(37.5,75,"img/dino.png",0,display.canvas.height-100,"image");
-dino.physics = true; dino.gravity = 1;
-display.add(dino);
-
-const obt = new Component(75/4,75/2,"img/obt.png",display.canvas.width,display.canvas.height-75/2,"image");
-obt.speedX = -1; display.add(obt);
-
-setInterval(()=> s += 1, 1000);
-
-function jump(){
-  if(dino.y >= display.canvas.height - dino.height){
-    dino.gravity = -8;
-    setTimeout(()=> dino.gravity = 1, 180);
-  }
-}
-window.addEventListener('keydown', e =&gt; { if(e.key === ' ') jump(); });
-
-function update(){
-  score.text = `Score : ${s}`; hst.text = `Highscore : ${hs}`;
-  if(dino.y &gt;= display.canvas.height - dino.height){ dino.y = display.canvas.height - dino.height; dino.gravitySpeed = 0; }
-  if(obt.x &lt;= -obt.width) obt.x = display.canvas.width;
-  if(dino.crashWith(obt)){ alert('You lose'); s = 0; obt.x = display.canvas.width; }
-  if(s &gt; hs){ hs = s; localStorage.setItem('hs', hs); }
-}</code></pre>
-
-      </details>
-    </article>
-    <img src="img/icon.jpg" class="secimg" alt="Game Icon">
-  </div>
-            
-</fieldset>
-
-    <fieldset>
-        <legend>V2 Tutorials</legend>
-        <div class="con">
-    <article>
-        <h2>TCJSGAME</h2>
-                <p><b>Version:</b> 2.0 | <b>Date:</b> March 12, 2025</p>
-                <p><b>Description:</b> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, cameras, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
-                <a href="vid/index.html - ex - Visual Studio Code 2025-03-21 02-31-19.mp4" download>Download documentation now ⏬</a> <a href="vid/index.html - ex - Visual Studio Code 2025-03-21 02-31-19.mp4" target="_blank"> View documentation now 🪟</a>
-    </article>
-    <iframe  width="100%" height="100%" class="secimg" src="https://www.youtube.com/embed/_BG-vd7Jh18?si=uTncx5UNh-yjJYrw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>TCJSgame v1 documentations</legend>
-        <div class="con">
-    <article>
-        Learn TCJSgame v1 with examples.
-        <p><b>Version:</b> 1.0 | <b>Date:</b> March 12, 2025</p>
-            <p><b>Description:</b> tcjsgame.js is a lightweight JavaScript game engine for creating 2D games with a canvas-based rendering system. It includes classes for managing display, components, sounds, and sprites, along with utility objects (move and state) for manipulating game entities.</p>
-            <a href="mat/doc.pdf" download>Download documentation now ⏬</a> <a href="mat/doc.pdf" target="_blank"> View documentation now 🪟</a>
-        
-            
-    <p>
-        <h3>History</h3>
-        Owolabi kehinde (the authur) was and wanted to learn how to create a game using Javascript in W3schools but it was to hard for him so he decided to created Jgame in 2023 and finished 2024. He later renamed it to TCgame in 2025 and then changed it to TCJSgame in the same year.
-    </p>
-    </article>
-    <iframe src="mat/doc.pdf" width="100%" height="100%" class="secimg">
-</div>
-</fieldset>
-
+    <main class="container">
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">Easy to Learn</h3>
+                <p>Designed with beginners in mind. Start creating games with just a few lines of code.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Lightweight</h3>
+                <p>Minimal footprint with powerful features. No dependencies required.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎮</div>
+                <h3 class="feature-title">2D Game Focused</h3>
+                <p>Built specifically for 2D games with physics, collisions, and sprite management.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <h3 class="feature-title">Extensible</h3>
+                <p>Extend functionality with performance extensions and custom components.</p>
+            </div>
         </section>
+        
+        <!-- Main Content Sections -->
+        <div class="section-grid">
+            <!-- About TCJSgame -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">About TCJSgame</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>Latest Version:</strong> 3.0 | <strong>Release Date:</strong> September 3, 2025</p>
+                    <p>TCJSgame is a lightweight JavaScript game engine for creating 2D games directly in the browser. It uses a canvas-based rendering system and provides essential classes for Display, Components, Camera, Sound, Sprites, and TileMaps.</p>
+                    
+                    <details>
+                        <summary>History & Development</summary>
+                        <p>TCJSgame was created by <strong>Owolabi Kehinde</strong> as a learning project that evolved into a full-featured game engine. Starting as Jgame in 2023, it became TCgame in 2024, and was rebranded to TCJSgame in 2025.</p>
+                        <p>Version 3 introduces improved movement utilities, angle-based motion, TileMap rendering, a camera system, and a more robust Component class.</p>
+                    </details>
+                </div>
+                <div class="card-footer">
+                    <a href="/v3-doc/" class="btn">View Documentation</a>
+                </div>
+            </section>
+            
+            <!-- Playground -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">TCJSgame Playground</h2>
+                </div>
+                <div class="card-body">
+                    <p>Experiment with TCJSgame directly in your browser using the official playground. Test code, create prototypes, and see results in real-time!</p>
+                    <p>The playground supports both V3 and V2 of the TCJSgame engine with an intuitive interface for rapid development.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://terracodes004.github.io/tcjsgame_editor/" target="_blank" class="btn">Open Playground</a>
+                </div>
+            </section>
+            
+            <!-- Quick Start -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Quick Start</h2>
+                </div>
+                <div class="card-body">
+                    <p>Get started with TCJSgame in minutes. Here's a simple example to create a basic game scene:</p>
+                    
+                    <div class="code-block">
+// Create a display (canvas)<br>
+const display = new Display();<br>
+display.start(800, 600);<br><br>
+
+// Create a player component<br>
+const player = new Component(50, 50, "blue", 100, 100, "rectangle");<br>
+player.speedX = 5;<br><br>
+
+// Add to display<br>
+display.add(player);<br><br>
+
+// Game loop<br>
+function update() {<br>
+&nbsp;&nbsp;// Move player with arrow keys<br>
+&nbsp;&nbsp;if (state.key("ArrowRight")) player.x += player.speedX;<br>
+&nbsp;&nbsp;if (state.key("ArrowLeft")) player.x -= player.speedX;<br>
+}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="download.html" class="btn">Download Engine</a>
+                </div>
+            </section>
+            
+            <!-- Tutorials -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Tutorials & Examples</h2>
+                </div>
+                <div class="card-body">
+                    <p>Learn TCJSgame with step-by-step tutorials and examples:</p>
+                    <ul>
+                        <li><a href="#dino-game">Dino Game Tutorial</a></li>
+                        <li><a href="doc.html">Complete Documentation</a></li>
+                        <li><a href="https://www.youtube.com/embed/_BG-vd7Jh18?si=uTncx5UNh-yjJYrw" target="_blank">Video Tutorials</a></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="doc.html" class="btn">View All Tutorials</a>
+                </div>
+            </section>
+            
+            <!-- Terra Codes -->
+            <section class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Terra Codes</h2>
+                </div>
+                <div class="card-body">
+                    <p>Terra Codes is a software company focused on creating tools for developers, designers, and computer enthusiasts.</p>
+                    
+                    <details>
+                        <summary>About Terra Codes</summary>
+                        <p>Founded by a Nigerian teenager at age 16, Terra Codes aims to gather developers and create innovative software solutions.</p>
+                    </details>
+                </div>
+                <div class="card-footer">
+                    <a href="about.html" class="btn">Learn More</a>
+                </div>
+            </section>
+            
+            <!-- Dino Game Tutorial -->
+            <section class="card" id="dino-game">
+                <div class="card-header">
+                    <h2 class="card-title">Dino Game Tutorial</h2>
+                </div>
+                <div class="card-body">
+                    <p>Build a Chrome Dino-style game with TCJSgame V2. This step-by-step tutorial covers:</p>
+                    <ul>
+                        <li>Setting up the game display</li>
+                        <li>Creating player and obstacles</li>
+                        <li>Implementing physics and collisions</li>
+                        <li>Adding score tracking</li>
+                    </ul>
+                    
+                    <details>
+                        <summary>View Code Snippet</summary>
+                        <div class="code-block">
+// Create player with physics<br>
+const dino = new Component(37.5, 75, "img/dino.png", 0, display.canvas.height - 100, "image");<br>
+dino.physics = true;<br>
+dino.gravity = 1;<br>
+display.add(dino);<br><br>
+
+// Jump function<br>
+function jump() {<br>
+&nbsp;&nbsp;if (dino.y >= display.canvas.height - dino.height) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dino.gravity = -8;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() => { dino.gravity = 1; }, 180);<br>
+&nbsp;&nbsp;}<br>
+}
+                        </div>
+                    </details>
+                </div>
+                <div class="card-footer">
+                    <a href="#full-tutorial" class="btn">View Full Tutorial</a>
+                </div>
+            </section>
+        </div>
     </main>
     
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>TCJSgame - Lightweight JavaScript Game Engine</p>
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About</a>
+                <a href="doc.html" class="footer-link">Documentation</a>
+                <a href="download.html" class="footer-link">Download</a>
+                <a href="https://github.com/terracodes004/tcjsgame" class="footer-link">GitHub</a>
+                <a href="https://terracodes004.github.io/tcjsgame_editor/" class="footer-link">Playground</a>
+            </div>
+            <p class="copyright">Created by Owolabi Kehinde | Terra Codes © 2025</p>
+        </div>
+    </footer>
+    
     <script>
-        let i = 0
-         function move() { 
-             imgs = [,"url('img/icon.jpg')", "url('img/logo.png')", "url('img/game.png')", "url('img/game1.png')", "url('img/game.jpg')", "url('img/game1.jpg')"]
-             //,"url('static/assets/presido.jpg')""url('static/assets/more_ym.jpg')"
-             console.log(imgs[i])
-             document.querySelector('header').style.backgroundImage = imgs[i] 
-             setTimeout(() => {
-                 //noting
-                 
-                 console.log("It worked"+i)
-             }, 3000);
-             i += 1
-             if(i > 6){
-                 i = 0
-             }
-             
-
-         }
-             
-
-         
-          setInterval(move, 3000);
-     </script>
-     
-     <script src="script.js"></script>
+        // Header background animation
+        let i = 0;
+        function changeHeaderBackground() {
+            const imgs = [
+                "linear-gradient(135deg, #007BFF 0%, #0056b3 100%)",
+                "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+                "linear-gradient(135deg, #fc466b 0%, #3f5efb 100%)"
+            ];
+            
+            document.querySelector('.main-header').style.background = imgs[i];
+            i = (i + 1) % imgs.length;
+        }
+        
+        // Change background every 5 seconds
+        setInterval(changeHeaderBackground, 5000);
+        
+        // Add active class to current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
