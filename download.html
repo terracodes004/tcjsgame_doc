@@ -218,9 +218,346 @@
             color: rgba(255, 255, 255, 0.7);
             padding: 0 1rem;
         }
+        /* Add these to your existing CSS at the bottom, or modify the existing responsive section */
+
+/* ==================== */
+/* RESPONSIVE FIXES     */
+/* ==================== */
+
+/* Base Mobile Styles */
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    .main-header {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .logo-img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    /* Navigation - Stack vertically */
+    .nav-list {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-link:hover, .nav-link.active {
+        border-bottom: 3px solid var(--primary-blue);
+    }
+    
+    /* CTA Buttons - Full width on mobile */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: 0.9rem 1.5rem;
+    }
+    
+    /* Main Content Layout */
+    .container {
+        padding: 0.5rem;
+        margin: 1rem auto;
+    }
+    
+    .section-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Features Grid - Stack vertically */
+    .features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    
+    .feature {
+        padding: 1rem;
+    }
+    
+    /* Cards */
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .card-header {
+        padding: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-footer {
+        padding: 1rem;
+    }
+    
+    /* Code Blocks - Enable horizontal scrolling */
+    .code-block {
+        font-size: 0.8rem;
+        padding: 1rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* Table responsiveness */
+    .comparison-table {
+        overflow-x: auto;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+    
+    .comparison-table table {
+        min-width: 600px;
+    }
+    
+    /* Extension Cards */
+    .extensions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .extension-category {
+        padding: 1rem;
+    }
+    
+    .extension-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    /* Installation Guide Steps */
+    .guide-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Tutorial Steps */
+    .tutorial-steps {
+        gap: 1.5rem;
+    }
+    
+    .tutorial-step {
+        padding: 1rem;
+    }
+    
+    /* Features Grid in Tutorial */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    
+    .footer-link {
+        padding: 0.5rem;
+    }
+}
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.75rem;
+    }
+    
+    .card-title {
+        font-size: 1.3rem;
+    }
+    
+    .feature-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Button adjustments */
+    .btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Smaller padding everywhere */
+    .main-header {
+        padding: 1rem 0.5rem;
+    }
+    
+    .container {
+        padding: 0.5rem;
+    }
+    
+    /* Code blocks even smaller */
+    .code-block {
+        font-size: 0.75rem;
+        padding: 0.75rem;
+    }
+    
+    /* Hide complex elements on very small screens */
+    details summary {
+        font-size: 0.9rem;
+    }
+    
+    details[open] {
+        padding: 0.5rem;
+    }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .extensions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==================== */
+/* TOUCH-FRIENDLY FIXES */
+/* ==================== */
+
+/* Better touch targets */
+.nav-link,
+.btn,
+.footer-link {
+    min-height: 44px; /* Apple's recommended minimum touch target */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevent text zoom on form elements */
+input, select, textarea, button {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* Smooth scrolling for mobile */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==================== */
+/* FLEXBOX FALLBACKS    */
+/* ==================== */
+
+/* Ensure flex items wrap properly */
+.cta-buttons,
+.footer-links,
+.extension-footer {
+    flex-wrap: wrap;
+}
+
+/* Prevent overflow on small screens */
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Image responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==================== */
+/* MOBILE MENU IMPROVEMENT */
+/* ==================== */
+
+@media (max-width: 768px) {
+    .main-nav {
+        position: relative;
+    }
+    
+    .nav-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    /* Optional: Add hamburger menu for better mobile UX */
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 101;
+    }
+    
+    .nav-list.active {
+        max-height: 500px;
+    }
+}
+
+/* ==================== */
+/* IMPROVED TYPOGRAPHY FOR MOBILE */
+/* ==================== */
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.1rem; }
+    
+    p, li {
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body>
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -333,33 +670,7 @@
                     <h3>Sound Extension</h3>
                     <p>Audio Management</p>
                 </div>
-                <div class="card-body">
-                    <span class="version">Version 1.0 | March 12, 2025</span>
-                    <p class="description">Adds comprehensive sound and music capabilities to your game. Play, loop, and stop audio files with simple API calls.</p>
-                    <a href="mat/tcjsgame-sound.js" class="download-btn" download>Download Extension</a>
-                </div>
-                <div class="card-footer">
-                    <span class="file-size">~7 KB</span>
-                    <span class="download-icon">⏬</span>
-                </div>
-            </div>
-            
-            <!-- Save Extension -->
-            <div class="extension-card">
-                <div class="card-header">
-                    <h3>Save Extension</h3>
-                    <p>Game State Persistence</p>
-                </div>
-                <div class="card-body">
-                    <span class="version">Version 1.0 | March 12, 2025</span>
-                    <p class="description">Enables saving and loading game progress using browser's local storage. Perfect for maintaining player progression between sessions.</p>
-                    <a href="mat/tcjsgame-save.js" class="download-btn" download>Download Extension</a>
-                </div>
-                <div class="card-footer">
-                    <span class="file-size">~6 KB</span>
-                    <span class="download-icon">⏬</span>
-                </div>
-            </div>
+                
             
             <!-- TCJSGame Engine v2 -->
             <div class="extension-card">
@@ -400,5 +711,20 @@
     <footer>
         <p>TCJSGame &copy; 2025 | Created by Owolabi Kehinde</p>
     </footer>
+    <script>
+        // Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            navList.classList.toggle('active');
+            this.textContent = navList.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+});
+    </script>
 </body>
 </html>
+
