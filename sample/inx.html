@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, inital-scale=1.0" />
+<title>Flappy bird</title>
+<style type="text/css">
+canvas{
+  background-color: grey;
+  width: 100%;
+  height:100vh;
+
+}
+body{
+  margin:0;
+}
+ button{
+    position: fixed;
+    top:0;
+    right:0;
+    text-align: center;
+    width: 1cm;
+    height: 2cm;
+    font-size: 30px;
+ }   
+</style>
+<script src="tcjsgame-v3.js">
+    
+</script>
+
+</head>
+<body>  
+<script>
+
+if(!localStorage.hs){
+    localStorage.hs = 0
+}
+    console.log(localStorage.hs)
+    let display = new Display()
+display.start(700, 300)
+let hh = new Component(700,300,"hh.png",0,0,"image")
+display.add(hh)
+display.add(hh, 1)
+display.add(hh, 2)
+let bird = new Component(30,30,"player.png",10,10,"image")
+bird.physics = true
+bird.gravity = 0.03
+display.add(bird)
+bird.bounce = 0
+let rotate = 0
+let bgMusic = new Sound("/Vicke Blanka - Black Rover (Audio Video (TVアニメ「ブラッククローバー」第3クール.mp3")
+addEventListener("keypress", ()=>{
+    // bgMusic.play()
+})
+addEventListener("mousedown",(e)=>{
+
+    if (display.scene == 0) {
+        bird.gravity = -0.1
+        rotate = -3.14 * 5 / 1800
+        setTimeout(() => {
+            bird.gravity = 0.03
+            rotate = 3.14 * 3 / 360
+        }, 250)
+        
+    } else if (display.scene == 1) {
+        display.scene = 0
+        bird.y = 0
+        tt.x = 700
+        tt2.x = 700 + 233.333333333
+        tt3.x = 700 + 466.666666667
+        bb.x = 700
+        bb2.x = 700 + 233.333333333
+        bb3.x = 700 + 466.666666667
+        tt.speedX = -1
+        tt2.speedX = -1
+        tt3.speedX = -1
+        bb.speedX = -1
+        bb2.speedX = -1
+        bb3.speedX = -1
+        num = 0
+        gj = setInterval(() => {
+            num++
+            nhs = Number(localStorage.hs)
+            if (nhs <= num) {
+                localStorage.hs = num
+            }
+        }, 1000)
+        
+        
+        
+    
+    
+    
+}
+})
+addEventListener("keypress", (e)=>{
+  if(e.key == " "){
+      if(display.scene == 0){
+    bird.gravity = -0.1
+    rotate = -3.14*5/1800
+    setTimeout(()=>{
+      bird.gravity = 0.03
+      rotate = 3.14*3/360
+        },250)
+    
+    }else if(display.scene == 1){
+        display.scene = 0
+        bird.y = 0
+        tt.x = 700
+        tt2.x = 700+233.333333333
+        tt3.x = 700+466.666666667
+        bb.x = 700
+        bb2.x = 700+233.333333333
+        bb3.x = 700+466.666666667
+        tt.speedX = -1
+        tt2.speedX = -1
+        tt3.speedX = -1
+        bb.speedX = -1
+        bb2.speedX = -1
+        bb3.speedX = -1
+        num = 0
+        gj = setInterval(() => {
+    num++
+    nhs = Number(localStorage.hs)
+    if (nhs <= num) {
+        localStorage.hs = num
+    }
+}, 1000)
+
+
+        
+    }
+    
+    
+  }
+})
+
+    let height = Math.random()*200
+    let otherHeight = display.canvas.height - height - 75
+    let tt = new Component(30, height, "pole2.png", 700, 0,"image")
+    let tt2 = new Component(30, height, "pole2.png", 700+233.333333333, 0,"image")
+    let tt3 = new Component(30, height, "pole2.png", 700+466.666666667, 0,"image")
+    let bb = new Component(30, otherHeight, "pole2.png", 700, 300-otherHeight,"image")
+    let bb2 = new Component(30, otherHeight, "pole2.png", 700+233.333333333, 300-otherHeight,"image")
+    let bb3 = new Component(30, otherHeight, "pole2.png", 700+466.666666667, 300-otherHeight,"image")
+    console.log(bb)
+    tt.speedX = -1
+    tt2.speedX = -1
+    tt3.speedX = -1
+    bb.speedX = -1
+    bb2.speedX = -1
+    bb3.speedX = -1
+    display.add(bb)
+    display.add(bb2)
+    display.add(bb3)
+    
+    display.add(tt)
+    display.add(tt2)
+    display.add(tt3)
+
+
+let gameOver = new Component("25px","impact","red",90,90,"text")
+let score = new Component("25px","impact","black",10,30,"text")
+let iii;
+let pause = new Component("24px","impact","red", 675, 25,"text")
+pause.text = "||"
+
+display.add(gameOver, 1)
+let cc = [tt,tt2,tt3,bb,bb2,bb3]
+setInterval(()=>{
+    tt.speedX-=0.1
+    tt2.speedX-=0.1
+    tt3.speedX-=0.1
+    bb.speedX-=0.1
+    bb2.speedX-=0.1
+    bb3.speedX-=0.1
+
+}, 3000)
+let nhs;
+let gj;
+gj = setInterval(()=>{num++
+                      nhs = Number(localStorage.hs)
+                     if(nhs<=num){
+        localStorage.hs = num
+    }
+                     }, 1000)
+display.add(score)
+display.add(score, 1)
+let num = 0
+let rr
+display.add(pause)
+function update(){
+  // if(display.keyCode == 32){
+  //   console.log("garri")
+  // }
+    
+    score.text = num
+    gameOver.text=("Game Over! Press space to try again. HighScore :"+localStorage.hs)
+    bird.angle += rotate
+    if(bird.angle >= 0){
+        bird.angle = 0
+        rotate = 0
+    } else{
+    }
+    if(bird.y <= 0){
+        bird.y = 0
+    }
+    iii=0
+    cc.forEach((e)=>{
+        iii+=1
+        if(bird.crashWith(e)){
+            display.scene = 1
+            clearInterval(gj)
+        }
+        if(e.x < -30){
+            e.x = 700- num
+            if(e.y == 0){
+                e.height = Math.random()*200
+            }
+            if(iii == 4){
+                e.height = 300-tt.height-75
+                e.y = 300 - e.height
+
+            }
+            if(iii == 5){
+                e.height = 300-tt2.height-75
+                e.y = 300 - e.height
+
+
+            }
+            if(iii == 6){
+                e.height = 300-tt3.height-75
+                e.y = 300 - e.height
+
+            }
+        }    
+        
+    })
+    bird.hitBottom()
+    // console.log(tt.x," jj")
+    
+
+}
+let pp = false
+function paus(){
+    console.log("Entered")
+    if(pp == false){
+        console.log("Working")
+        document.getElementById("ppp").innerHTML = "<|"
+        display.scene = 2
+        pp=true
+        clearInterval(gj)
+    }else{
+        pp=false
+        console.log("Perfect")
+        document.getElementById("ppp").innerHTML = "||"
+        display.scene = 0
+        gj = setInterval(() => {
+    num++
+    nhs = Number(localStorage.hs)
+    if (nhs <= num) {
+        localStorage.hs = num
+    }
+}, 1000)        
+    }
+}
+</script>
+<button id="ppp" onclick="paus()">
+    ||
+</button>
+</body>
+</html>
