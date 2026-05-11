@@ -430,7 +430,7 @@ var move ={
     },
     hitObject : function(id, otherid){
         id.physics = true;
-        if((id.crashWith(otherid)) && (id.y <= otherid)){
+        if((id.crashWith(otherid)) && (id.y >= otherid.y-id.height)){
             id.gravitySpeed = -(id.gravitySpeed * id.bounce);
         }
     },
@@ -443,6 +443,7 @@ var move ={
         vc = 1
         ////console.log(speed)
         //console.log("fh")
+        
                 if (id.x > x) {
                     id.speedX = -1*speed
                 } else{
@@ -660,7 +661,7 @@ class Sprite {
 
 class Tile extends Component{
     constructor(tx, ty,tid,com) {
-        super(com.width, com.height, com.color, com.x, com.y)
+        super(com.width, com.height, com.color, com.x, com.y, com.type)
         this.x = com.x
         this.color = com.color
         this.tx = tx
@@ -723,7 +724,7 @@ class TileMap {
                         }
                     }
                 });
-                    r += 1
+                    r += `1`
                     
                     txx += 1
                 }
